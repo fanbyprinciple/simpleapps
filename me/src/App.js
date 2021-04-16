@@ -4,14 +4,14 @@ import Sidebar from './components/sidebar'
 import Introduction from './components/introduction'
 import About from './components/about'
 import Timeline from './components/timeline'
-import New from './components/new'
+// import New from './components/new'
 
 class App extends Component {
   render() {
     return (
       <div id="colorlib-page">
         <div id="container-wrap">
-          <New></New>
+          
          	<Sidebar></Sidebar>
 				<div id="colorlib-main">
 					<Introduction></Introduction>

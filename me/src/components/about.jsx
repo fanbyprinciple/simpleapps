@@ -11,10 +11,12 @@ export default class About extends Component {
                 <div className="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
                 <div className="col-md-12">
                     <div className="about-desc">
-                    <span className="heading-meta">About Us</span>
+                    <span className="heading-meta">About me</span>
                     <h2 className="colorlib-heading">Who Am I?</h2>
-                    <p>I am a computer grad student from DAIICT-Gandhinagar with ICT as my major.I love exploring new technologies and often amazed by the progress we as a human species have mad so far in the recent years (apart from the headphone-jack part!!)</p>
-                    <p>I have started reflecting my ideas and thougths through the medium of words recently so spelling and grammer mistaks are very often.You can write me back if you spot any and don't want to live anymore :P </p>
+                    <p>I am a hotel management student looking to make my mark in the world. I want to gain the skills and knowledge needed to become a world class Hotelier. My passion for my chosen field drives me to give my best eceryday.</p>
+                    <p>Seeking a training internship in order to enhance my skills and knowledge about the  various 
+Operations and departments in the Hotel ,this training  internship would help me explore my intrests
+And practically work on my skills  which would help me in becoming a budding hotelier.</p>
                     </div>
                 </div>
                 </div>
@@ -27,7 +29,7 @@ export default class About extends Component {
             <div className="row">
             <div className="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
                 <span className="heading-meta">What I do?</span>
-                <h2 className="colorlib-heading">Here are some of my expertise</h2>
+                <h2 className="colorlib-heading">I do a lot of things I bake I cook and what not</h2>
             </div>
             </div>
             <div className="row row-pt-md">
@@ -48,8 +50,8 @@ export default class About extends Component {
                     <i className="icon-phone3" />
                 </span>
                 <div className="desc">
-                    <h3>Data Structures & Algorithms</h3>
-                    <p>As coming from the CS background, I have good grasp over fundamental concepts of DSA</p>
+                    <h3>Reading books</h3>
+                    <p>I love reading books especially comics.</p>
                 </div>
                 </div>
             </div>
@@ -59,8 +61,32 @@ export default class About extends Component {
                     <i className="icon-data" />
                 </span>
                 <div className="desc">
-                    <h3>Dev Ops</h3>
-                    <p>I am pursuing my internship with DevOps team at Juniper and working with tools like Jenkins, Docker, K8s</p>
+                    <h3>Playing Chess</h3>
+                    <p>Queens pawn opening anyone?</p>
+                </div>
+                </div>
+            </div>
+
+            <div className="col-md-4 text-center animate-box">
+                <div className="services color-5">
+                <span className="icon">
+                    <i className="icon-data" />
+                </span>
+                <div className="desc">
+                    <h3>Excercising</h3>
+                    <p>Me wantthem muscles</p>
+                </div>
+                </div>
+            </div>
+
+            <div className="col-md-4 text-center animate-box">
+                <div className="services color-5">
+                <span className="icon">
+                    <i className="icon-data" />
+                </span>
+                <div className="desc">
+                    <h3>Collecting Knowledge</h3>
+                    <p>Astrange hobby indeed but I consider myself a connosiur of strange habits</p>
                 </div>
                 </div>
             </div>

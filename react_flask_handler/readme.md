@@ -4,13 +4,26 @@ Taken from : https://towardsdatascience.com/build-deploy-a-react-flask-app-47a89
 
 # Dependencies
 
+`npm i react`
+`pip install flask`
+
 `pip install flask-restful`
 `pip install flask_cors`
+`npm install axios --save`
 
-# to run 
+# to run flask server 
 
 `flask run`
 
+# to run react server
+
+`cd frontend`
+`npm start`
+
 ### Backend running succesfully
 
-![](backend.png)
+![](img/backend.png)
+
+### Creating frontend
+
+![](img/frontend.png)

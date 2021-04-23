@@ -1,0 +1,9 @@
+Flask @ file:///home/ktietz/src/ci/flask_1611932660458/work
+Flask-Cors==3.0.10
+Flask-RESTful==0.3.8
+Jinja2 @ file:///tmp/build/80754af9/jinja2_1612213139570/work
+lxml @ file:///C:/ci/lxml_1606516942900/work
+MarkupSafe @ file:///C:/ci/markupsafe_1607027406824/work
+requests @ file:///tmp/build/80754af9/requests_1608241421344/work
+urllib3 @ file:///tmp/build/80754af9/urllib3_1611694770489/work
+Werkzeug @ file:///home/ktietz/src/ci/werkzeug_1611932622770/work

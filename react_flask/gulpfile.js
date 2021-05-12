@@ -23,4 +23,4 @@ gulp.task('del', function () {
 
 gulp.task('default', function () {
     gulp.start('transform');
-  });
+});

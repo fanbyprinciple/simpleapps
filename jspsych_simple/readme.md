@@ -1,7 +1,5 @@
-# JSPsych simple experiment
+# deploying jspsych with jatos
 
-Taken from : https://www.jspsych.org/tutorials/rt-task/
+Not working as any modification is casuing it to say invalid study.
 
-## Simple reaction test experiment
-
-![](jspsych_simple.gif)
+![](food.gif)

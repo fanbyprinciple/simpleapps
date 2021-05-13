@@ -1,5 +1,10 @@
 # deploying jspsych with jatos
+# Creating Psychological surveys with JsPsych
 
-Not working as any modification is casuing it to say invalid study.
+Modifying the defualt Jspsych tutorial
 
 ![](food.gif)
+
+Working with a survey type gonogo experiment
+
+![](cookie.gif)

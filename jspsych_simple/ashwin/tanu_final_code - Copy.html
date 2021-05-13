@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My experiment</title>
+        <script src="jspsych-6.1.0/jspsych.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-categorize-image.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-fullscreen.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-survey-likert.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-survey-text.js"></script>
+        <script src="datahandler.js"></script>
+        <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css">
+    </head>
+    <body></body>
+    <script>
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+    // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+      }
+      return array;
+    }
+
+    /* create timeline */
+    var timeline = [];
+
+    var subject_name = 0
+    var condition_assignment = "Self";
+    var s_name = {
+            type: 'survey-text',
+            questions: [
+                {prompt: 'Please enter your name?', name: 'Name'},
+            ],
+            on_finish: function() {
+              subject_name = jsPsych.data.get(s_name).values();
+              subject_name = JSON.parse(subject_name[0].responses).Name
+      }
+        };
+    timeline.push(s_name);
+
+    var subject_age = 0
+    var condition_assignment = "Self";
+    var s_age = {
+            type: 'survey-text',
+            questions: [
+                {prompt: 'Age', name: 'Age'},
+            ],
+            on_finish: function() {
+              subject_age = jsPsych.data.get(s_age).values();
+              subject_age = JSON.parse(subject_age[0].responses).Age
+      }
+        };
+    timeline.push(s_age);
+
+    var subject_gender = 0
+    var condition_assignment = "Self";
+    var s_gender = {
+            type: 'survey-text',
+            questions: [
+                {prompt: 'Gender', name: 'Gender'},
+            ],
+            on_finish: function() {
+              subject_gender = jsPsych.data.get(s_gender).values();
+              subject_gender = JSON.parse(subject_gender[0].responses).Gender
+      }
+        };
+    timeline.push(s_gender);
+
+var subject_id = jsPsych.randomization.randomID(15)
+    
+    var full = {
+      type: 'fullscreen',
+      fullscreen_mode: true
+    };
+    timeline.push(full);
+
+    /* define welcome message trial */
+    var welcome = {
+      type: "html-keyboard-response",
+      stimulus: "Welcome to the experiment." + "<p> In this study, we are standardizing various images of day-to-day objects for experimental purposes. During the experiment, we require your complete, undistracted attention. Please sit in a quite area and give your respons with attentiveness as it will be only useful if you pay attention.</p>" +
+     "<p>There are no right or wrong answers. Rate each image based on your immediate reaction of the image. This experiment will last for 30-40mins.<p><br> "+
+
+
+
+      "<p>Press any key to begin.</p>"
+    };
+    timeline.push(welcome);
+
+    var instructions = {
+      type: "html-keyboard-response",
+      stimulus: "<p>In this experiment, images will appear on the screen one at a time.  Several such images will be presented in succession. Each image will be evaluated on the following scales:</p>" +
+
+      "<p><strong>1) Category</strong>: You have to pick one category option for each image. The categories are divided into <strong>household items</strong> (includes kitchen items, tools,  appliances etc), <strong>stationery items</strong> and <strong>edible food products</strong>. For each category, you have to press H, S, F respectively. </p> <br>" +
+      "<p>In the following screens, you have to rate the image on the scale of 1 to 5 for the following:</p>" +
+          "<p>Press any key to begin.</p>"
+      };
+      timeline.push(instructions);
+
+    var images = [
+
+      "images/food/f001.jpg",]
+    shuffle(images);
+
+  var scale_1 = [
+      "1 (very unfamiliar)",
+      "2",
+      "3",
+      "4",
+      "5 (very familiar)"
+    ]
+
+    var scale_2 = [
+      "1 (not at all)",
+      "2",
+      "3",
+      "4",
+      "5 (extremely arousing)"
+
+    ]
+
+    var scale_3 = [
+      "1 (very negative)",
+      "2",
+      "3",
+      "4",
+      "5 (very positive)"
+
+    ]
+
+
+    var scale_4 = [
+      "1 (very simple)",
+      "2",
+      "3",
+      "4",
+      "5 (very complex)"
+    ]
+
+    for (var i = 0; i < images.length; i++) {
+      timeline.push({
+        type: 'categorize-image',
+        stimulus: images[i],
+        correct_text: '  ',
+        incorrect_text: "  ",
+        feedback_duration: 100,
+        choices: ['f', 'h', 's'],
+        prompt: "<p> 1) Determine to which category the object belongs (by pressing following keys): </p>" + "<p> Press<strong> H </strong> for Household items </p>" + " Press<strong> S </strong> for Stationary items" + "<p> Press <strong> F </strong> for Food</p>"
+      });
+      timeline.push({
+        type: "survey-likert",
+        questions: [
+          {prompt: "<img src=" + images[i]+ ">" + "<p> 2) How <strong>Familiar</strong> you are with the object?</p>", name: '<strong>fam_</strong>' + i,  labels: scale_1, required: true},
+        ],
+     });
+       timeline.push({
+          type: "survey-likert",
+          questions: [
+            {prompt: "<img src=" + images[i]+ ">"+ "<p> 3) How emotionally <strong>Arousing</strong> is the object?</p>", name: 'aro_' + i, labels: scale_2, required: true},
+          ],
+      });
+
+       timeline.push({
+          type: "survey-likert",
+          questions: [
+            {prompt: "<img src=" + images[i]+ ">"+ "<p> 4) How negatively or positively you view the object?</p>", name: '<strong>val_</strong>' + i, labels: scale_3, required: true},
+          ],
+      });
+
+       timeline.push({
+          type: "survey-likert",
+          questions: [
+            {prompt: "<img src=" + images[i]+ ">"+ "</p> 5) Rate the level to which the image appears to be <strong>Visually Complex</strong> in terms of quantity of details and intricacy of lines.</p>", name: 'comp_' + i, labels: scale_4, required: true},
+          ],
+      });
+    }
+
+
+    var thankyou = {
+        type: 'html-keyboard-response',
+        stimulus: 'Thanks for participating!'
+    }
+    timeline.push(thankyou);
+
+    var not_full = {
+      type: 'fullscreen',
+      fullscreen_mode: false
+    };
+    timeline.push(not_full);
+
+    jsPsych.data.addProperties({
+      subject: subject_id,
+      condition: condition_assignment
+    });
+
+    /* start the experiment */
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+        data = jsPsych.data.get().values();
+        document.writeln("<div style=\"text-align: center; font-size: 24px;\">Thanks for participating! You may close the window now.</div>");
+      }
+    });
+    </script>
+
+
+    <body>
+
+    </body>
+    </html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AX-CPT Task</title>
+        <script src="jspsych.js"></script>
+        <script src="https://svgjs.com/docs/3.0/"></script>
+        <script src="plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+        <script src="plugins/jspsych-fullscreen.js"></script>
+        <script src="plugins/jspsych-iat-image.js"></script>
+        <script src="plugins/jspsych-preload.js"></script>
+        <script src='plugins/jspsych-survey-text.js'></script>
+        <link href="css/jspsych.css" rel="stylesheet" type="text/css">
+    </head>
+    <body></body>
+    <script> 
+
+timeline = []
+
+var trialpos = ['pt1.jpg','pt2.jpg','pt3.jpg','pt4.jpg','pt5.jpg','pt6.jpg','pt7.jpg','pt8.jpg']
+var trial_pos = jsPsych.randomization.sampleWithoutReplacement(trialpos, 8);  
+var trialneu = ['pn1.jpg','pn2.jpg','pn3.jpg','pn4.jpg','pn5.jpg','pn6.jpg','pn7.jpg','pn8.jpg']
+var trial_neu = jsPsych.randomization.sampleWithoutReplacement(trialneu, 8);
+var trialneg = ['nn1.jpg','nn2.jpg','nn3.jpg','nn4.jpg','nn5.jpg','nn6.jpg','nn7.jpg','nn8.jpg']
+var trial_neg = jsPsych.randomization.sampleWithoutReplacement(trialneg, 8);
+var all_images = ['trialpos/pt1.jpg','trialpos/pt2.jpg','trialpos/pt3.jpg','trialpos/pt4.jpg','trialpos/pt5.jpg','trialpos/pt6.jpg','trialpos/pt7.jpg','trialpos/pt8.jpg','trialneg/nn1.jpg','trialneg/nn2.jpg','trialneg/nn3.jpg','trialneg/nn4.jpg','trialneg/nn5.jpg','trialneg/nn6.jpg','trialneg/nn7.jpg','trialneg/nn8.jpg','trialneu/pn1.jpg','trialneu/pn2.jpg','trialneu/pn3.jpg','trialneu/pn4.jpg','trialneu/pn5.jpg','trialneu/pn6.jpg','trialneu/pn7.jpg','trialneu/pn8.jpg','imagesneg/neg1.jpg','imagesneg/neg2.jpg','imagesneg/neg3.jpg','imagesneg/neg4.jpg','imagesneg/neg5.jpg','imagesneg/neg6.jpg','imagesneg/neg7.jpg','imagesneg/neg8.jpg','imagesneg/neg9.jpg','imagesneg/neg10.jpg','imagesneg/neg11.jpg','imagesneg/neg12.jpg','imagesneg/neg13.jpg','imagesneg/neg14.jpg','imagesneg/neg15.jpg','imagesneg1/neg16.jpg','imagesneg1/neg17.jpg','imagesneg1/neg18.jpg','imagesneg1/neg19.jpg','imagesneg1/neg20.jpg','imagesneg1/neg21.jpg','imagesneg1/neg22.jpg','imagesneg1/neg23.jpg','imagesneg1/neg24.jpg','imagesneg1/neg25.jpg','imagesneg1/neg26.jpg','imagesneg1/neg27.jpg','imagesneg1/neg28.jpg','imagesneg1/neg29.jpg','imagesneg1/neg30.jpg','imagesneu/neu1.jpg','imagesneu/neu2.jpg','imagesneu/neu3.jpg','imagesneu/neu4.jpg','imagesneu/neu5.jpg','imagesneu/neu6.jpg','imagesneu/neu7.jpg','imagesneu/neu8.jpg','imagesneu/neu9.jpg','imagesneu/neu10.jpg','imagesneu/neu11.jpg','imagesneu/neu12.jpg','imagesneu/neu13.jpg','imagesneu/neu14.jpg','imagesneu/neu15.jpg','imagesneu1/neu16.jpg','imagesneu1/neu17.jpg','imagesneu1/neu18.jpg','imagesneu1/neu19.jpg','imagesneu1/neu20.jpg','imagesneu1/neu21.jpg','imagesneu1/neu22.jpg','imagesneu1/neu23.jpg','imagesneu1/neu24.jpg','imagesneu1/neu25.jpg','imagesneu1/neu26.jpg','imagesneu1/neu27.jpg','imagesneu1/neu28.jpg','imagesneu1/neu29.jpg','imagesneu1/neu30.jpg','imagespos/pos1.jpg','imagespos/pos2.jpg','imagespos/pos3.jpg','imagespos/pos4.jpg','imagespos/pos5.jpg','imagespos/pos6.jpg','imagespos/pos7.jpg','imagespos/pos8.jpg','imagespos/pos9.jpg','imagespos/pos10.jpg','imagespos/pos11.jpg','imagespos/pos12.jpg','imagespos/pos13.jpg','imagespos/pos14.jpg','imagespos/pos15.jpg','imagespos1/pos16.jpg','imagespos1/pos17.jpg','imagespos1/pos18.jpg','imagespos1/pos19.jpg','imagespos1/pos20.jpg','imagespos1/pos21.jpg','imagespos1/pos22.jpg','imagespos1/pos23.jpg','imagespos1/pos24.jpg','imagespos1/pos25.jpg','imagespos1/pos26.jpg','imagespos1/pos27.jpg','imagespos1/pos28.jpg','imagespos1/pos29.jpg','imagespos1/pos30.jpg']
+var x = 0, y = 0, z=0;
+
+var preload = {
+    type: 'preload',
+    images: all_images,
+}
+
+  var imagespos = ['pos1.jpg','pos2.jpg','pos3.jpg','pos4.jpg','pos5.jpg','pos6.jpg','pos7.jpg','pos8.jpg','pos9.jpg','pos10.jpg','pos11.jpg','pos12.jpg','pos13.jpg','pos14.jpg','pos15.jpg']
+  var images_pos = jsPsych.randomization.repeat(imagespos, 2);
+  var imagespos1 = ['pos16.jpg','pos17.jpg','pos18.jpg','pos19.jpg','pos20.jpg','pos21.jpg','pos22.jpg','pos23.jpg','pos24.jpg','pos25.jpg','pos26.jpg','pos27.jpg','pos28.jpg','pos29.jpg','pos30.jpg']
+  var images_pos1 = jsPsych.randomization.repeat(imagespos1, 2);
+
+  var imagesneu = ['neu1.jpg','neu2.jpg','neu3.jpg','neu4.jpg','neu5.jpg','neu6.jpg','neu7.jpg','neu8.jpg','neu9.jpg','neu10.jpg','neu11.jpg','neu12.jpg','neu13.jpg','neu14.jpg','neu15.jpg']
+  var images_neu = jsPsych.randomization.repeat(imagesneu, 2);
+  var imagesneu1 = ['neu16.jpg','neu17.jpg','neu18.jpg','neu19.jpg','neu20.jpg','neu21.jpg','neu22.jpg','neu23.jpg','neu24.jpg','neu25.jpg','neu26.jpg','neu27.jpg','neu28.jpg','neu29.jpg','neu30.jpg']
+  var images_neu1 = jsPsych.randomization.repeat(imagesneu1, 2);
+
+  var imagesneg = ['neg1.jpg','neg2.jpg','neg3.jpg','neg4.jpg','neg5.jpg','neg6.jpg','neg7.jpg','neg8.jpg','neg9.jpg','neg10.jpg','neg11.jpg','neg12.jpg','neg13.jpg','neg14.jpg','neg15.jpg']
+  var images_neg = jsPsych.randomization.repeat(imagesneg, 2);
+  var imagesneg1 = ['neg16.jpg','neg17.jpg','neg18.jpg','neg19.jpg','neg20.jpg','neg21.jpg','neg22.jpg','neg23.jpg','neg24.jpg','neg25.jpg','neg26.jpg','neg27.jpg','neg28.jpg','neg29.jpg','neg30.jpg']
+  var images_neg1 = jsPsych.randomization.repeat(imagesneg1, 2);
+  var j = 0, k = 0, l=0, e=0, f=0, g=0;
+
+  var fixation = {
+  type: 'html-keyboard-response',
+  stimulus: '<div style="font-size:50px;">•</div>',
+  choices: jsPsych.NO_KEYS,
+  trial_duration: 500,
+}
+
+  var trial_proportions = ["AX", "AX", "AX", "AX", "AY", "BX", "BY", "BY", "BY", "BY"]
+  var practice_block_neg = jsPsych.randomization.repeat(trial_proportions, 2)
+  var practice_block_pos = jsPsych.randomization.repeat(trial_proportions, 2)
+  var block1 = jsPsych.randomization.repeat(trial_proportions, 6)
+  var block1a = jsPsych.randomization.repeat(trial_proportions, 6)
+  var block2 = jsPsych.randomization.repeat(trial_proportions, 6)
+  var block2a = jsPsych.randomization.repeat(trial_proportions, 6)
+
+/* ************************************ */
+/* Set up jsPsych blocks */
+/* ************************************ */
+var welcome = {
+  type: "html-keyboard-response",
+  data: {
+    trial_id: "welcome"
+  },
+  stimulus: "</p><strong>WELCOME!</strong>",
+  trial_duration: 1000,
+    response_ends_trial: false,
+    timing_post_trial: 0
+};
+
+timeline.push({
+  type: 'fullscreen',
+  fullscreen_mode: true
+});
+
+var subject_info = null;
+        var s_info = {
+            type: 'survey-text',
+            questions: [{prompt: 'Please enter your name', name: 'Name', required :1},
+            {prompt: 'Age', name: 'Age', required :1},
+            {prompt: 'Gender', name: 'Gender', required :1},
+            {prompt: 'Phone number', name: 'Phone number', required :1}],
+            on_finish: function() {
+              //Important for for getting subject's name that's how the script knows what's the name of the participant, in order to save it.
+              subject_name = jsPsych.data.get(s_info).values();
+              //if in case there's an error regarding subject's name, change the 3 below to 2
+              subject_name = subject_name[3].response.Name;
+          }
+        }
+
+var instructions_block = {
+  type: "html-keyboard-response",
+  stimulus: "<p><strong>Instructions</strong> (Read carefully)" +
+  "<p>In this task, first a fixation dot (•) will appear on the screen, you have to maintain your gaze on the dot throughout the task. In each trial, the dot will be replaced by a letter 'A' or 'B', followed by the presentation of a 'negative' or 'neutral' appearing image. There may be four conditions in the task." +
+     "</p> <strong>1.</strong>  'A' followed by 'negative' image." +
+     "</p> <strong>2.</strong>  'A' followed by 'neutral' image." +
+     "</p> <strong>3.</strong>  'B' followed by 'negative' image." +
+     "</p> <strong>4.</strong>  'B' followed by 'neutral' image." +
+      "</p><p>Your job is to respond by pressing a key during the presentation of the image. If you see an <strong>'A' followed by a 'negative' appearing image</strong>, press <strong>M</strong>." + 
+        "</p> In any other case <strong>('A' followed by 'neutral' image</strong> or <strong>'B' followed by 'negative'/'neutral' appearing image)</strong>, press <strong>Z</strong>."+
+        "</p> You can take a trial to understand the task. Press any key to continue",
+  data: {
+    exp_id: "ax_cpt",
+    trial_id: 'instruction'
+  },
+  timing_post_trial: 1000
+};
+
+var instructions_block1 = {
+  type: "html-keyboard-response",
+  stimulus: [
+    "</p>We will now start the trial. Remember, after you see <strong>'A' followed by a 'negative' appearing image</strong> press the <strong>M key</strong>, and for all other combinations <strong>('A' followed by 'neutral' image or 'B' followed by 'negative'/'neutral' appearing image)</strong>, press the <strong>Z key</strong>. Now get ready with your fingers on the keys and try to respond as fast and as accurate as you can."+
+    "</p><strong>Please Note:</strong> If you want to blink during the task, try to blink quickly only when fixation dot (•) is on the screen, otherwise you may miss some information." +
+    "</p> press any key to continue.</p>"
+  ],
+  data: {
+    exp_id: "ax_cpt",
+    trial_id: 'instruction'
+  },
+  timing_post_trial: 1000
+};
+
+var main_block_neg = {
+  type: "html-keyboard-response",
+  data: {
+    trial_id: "moving to main(neg) task-----------"
+  },
+  stimulus: "</p> Now you are going to perform the main task, no feedback will be given. Remember, for <strong>'A' followed by 'negative' appearing image</strong> press <strong>M</strong>, in any other condition <strong>('A' followed by 'neutral' image</strong> or <strong>'B' followed by 'negative'/'neutral' appearing image)</strong>, press <strong>Z</strong>. " + "</p>Press any key to continue",
+  timing_post_trial: 1000
+};
+
+var breakN = {
+  type: "html-keyboard-response",
+  data: {
+    trial_id: "---------break (neg)----------"
+  },
+  stimulus: "</p>Take a break!"+"</p>For <strong>'A' followed by 'negative' appearing image</strong> press <strong>M</strong>, in any other condition <strong>('A' followed by 'neutral' image</strong> or <strong>'B' followed by 'negative'/'neutral' appearing image), press <strong>Z</strong></strong>. " + "</p>Press any key to continue",
+  timing_post_trial: 1000
+};
+
+var next_block = {
+  type: "html-keyboard-response",
+  data: {
+    trial_id: "moving to pos block-------"
+  },
+  stimulus: "</p>Take a break!"+ "</p> We are moving to the next section of the exp. This section is same as the previous one, the only difference is that 'negative' images are replaced by 'positive' images. Now the letter 'A' or 'B' will appear on the screen followed by the presentation of a 'positive' or 'neutral' apppearing image. There may be four conditions in the task:" +
+     "</p> <strong>1.</strong>  'A' followed by 'positive' image." +
+     "</p> <strong>2.</strong>  'A' followed by 'neutral' image." +
+     "</p> <strong>3.</strong>  'B' followed by 'positive' image." +
+     "</p> <strong>4.</strong>  'B' followed by 'neutral' image." +
+       "</p>Now when you see <strong>'A' followed by a 'positive' appearing image </strong> press <strong>M key</strong>. And in any other case <strong>('A' followed by 'neutral' appearing image</strong> or <strong>'B' followed by 'positive'/'neutral' appearing image)</strong> press <strong>Z key</strong>." + "</p> You can take a trial." +
+"</p> Get ready with your fingers on the keys and press any key to continue",
+  timing_post_trial: 1000
+};
+
+var main_block_pos = {
+  type: "html-keyboard-response",
+  data: {
+    trial_id: "moving to main(pos) task--------"
+  },
+  stimulus: "</p> Now you are going to perform the main task, no feedback will be given. Remember, for <strong>'A' followed by 'positive' appearing image</strong> press <strong>M</strong>, in any other condition <strong>('A' followed by 'neutral' appearing image</strong> or <strong>'B' followed by 'positive'/'neutral' appearing image)</strong> press <strong>Z</strong>. " + "</p>Press any key to continue",
+  timing_post_trial: 1000
+};
+
+var breakP = {
+  type: "html-keyboard-response",
+  data: {
+    trial_id: "---------break (pos)-----------"
+  },
+  stimulus: "</p> Take a break!"+"</p>For <strong>'A' followed by 'positive' appearing image</strong> press <strong>M</strong>, in any other condition <strong>('A' followed by 'neutral' appearing image</strong> or <strong>'B' followed by 'positive'/'neutral' appearing image)</strong> press <strong>Z</strong>. " + "</p>Press any key to continue",
+  timing_post_trial: 1000
+};
+
+var end_block = null;
+var s_feedback = {
+            type: 'survey-text',
+            data: {
+       trial_id: "post task questions"
+   },
+            questions: [
+                {prompt: '</p>The experiment has ended.'
+                + '</p>Any feedback from you about this experiment will be appreciated.', name: 'feedback', rows: 15, columns: 60},
+            ],
+};
+
+//Feedback Trial
+var feedback_trial = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      if (trl_correct == 1){
+        html = '<div style="font-size: 30px;color: green;">Correct!</div>';
+      } else{
+        html = '<div style="font-size: 30px;color: red;">Wrong!</div>';
+      }
+
+      return html
+    },
+    trial_duration: 500,
+};
+
+/* define test block cues and probes*/
+var A_cue = {
+    type: "html-keyboard-response",
+    stimulus: '<div style="font-size:70px;">A</div>',
+    is_html: true,
+    choices: jsPsych.NO_KEYS,
+    data: {
+      trial_id: "cue",
+    },
+    trial_duration: 500,
+    response_ends_trial: false,
+    timing_post_trial: 0
+  };
+  
+  var B_cue = {
+    type: "html-keyboard-response",
+    stimulus: '<div style="font-size:70px;">B</div>',
+    is_html: true,
+    choices: jsPsych.NO_KEYS,
+    data: {
+      trial_id: "cue",
+    },
+    trial_duration: 500,
+    response_ends_trial: false,
+    timing_post_trial: 0
+  };
+
+
+  var Pimg_neg = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"trialneg/" + trial_neg[x] + "\" height=\"233px\"width=\"311px\">";
+      x = (x+1) % trial_neg.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct)      
+    }
+};
+
+var Pimg_neu = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"trialneu/" + trial_neu[y] + "\" height=\"233px\"width=\"311px\">";
+      y = (y+1) % trial_neu.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct)     
+    }
+};
+
+var Pimg_pos = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"trialpos/" + trial_pos[z] + "\" height=\"233px\"width=\"311px\">";
+      z = (z+1) % trial_pos.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct)     
+    }
+};
+
+  var Imgpos = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"imagespos/" + images_pos[j] + "\" height=\"233px\"width=\"311px\">";
+      j = (j+1) % images_pos.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct)       
+    }
+};
+
+var Imgpos1 = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"imagespos1/" + images_pos1[e] + "\" height=\"233px\"width=\"311px\">";
+      e = (e+1) % images_pos1.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct)       
+    }
+};
+
+var Imgneu = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"imagesneu/" + images_neu[k] + "\" height=\"233px\"width=\"311px\">";
+      k = (k+1) % images_neu.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct) 
+    }
+};
+
+var Imgneu1 = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"imagesneu1/" + images_neu1[f] + "\" height=\"233px\"width=\"311px\">";
+      f = (f+1) % images_neu1.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct) 
+    }
+};
+
+var Imgneg = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"imagesneg/" + images_neg[l] + "\" height=\"233px\"width=\"311px\">";
+      l = (l+1) % images_neg.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct)      
+    }
+};
+
+var Imgneg1 = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+      html = "<img src=\"imagesneg1/" + images_neg1[g] + "\" height=\"233px\"width=\"311px\">";
+      g = (g+1) % images_neg1.length;
+      return html;
+    },
+    choices: ['z','m'],
+    data: {
+      trial_id: "probe",
+    },
+    stimulus_duration: 800,
+    trial_duration: 1500,
+    response_ends_trial: false,
+    timing_post_trial: 0,
+    post_trial_gap: 700,
+    on_finish: function(){
+      curr_key = jsPsych.data.get().last(1).values()[0].response
+      correct_key = jsPsych.data.get().last(1).values()[0].correct_key
+      
+      if (curr_key == correct_key){
+        trl_correct = 1
+      } else{
+        trl_correct = 0
+      }
+      console.log(curr_key)
+      console.log(correct_key)
+      console.log(trl_correct)      
+    }
+};
+
+  /* ************************************ */
+  /* Set up experiment */
+  /* ************************************ */
+
+  // Practice Block Negative //
+  var Practice_trial_neg = []
+  Practice_trial_neg.push(welcome)
+  Practice_trial_neg.push(s_info)
+  Practice_trial_neg.push(instructions_block)
+  Practice_trial_neg.push(instructions_block1)
+  
+  var block = practice_block_neg
+  for (i = 0; i < block.length; i++) {
+    switch (block[i]) {
+      case "AX":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Pimg_neg)
+        cue.data.condition = "AX"
+        probe.data.condition = "AX"
+        probe.data.correct_key = 'm' 
+        break;
+
+      case "BX":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Pimg_neg)
+        cue.data.condition = "BX"
+        probe.data.condition = "BX"
+        probe.data.correct_key = 'z' 
+        break;
+
+      case "AY":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Pimg_neu)
+        cue.data.condition = "AY"
+        probe.data.condition = "AY"
+        probe.data.correct_key = 'z' 
+        break;
+
+      case "BY":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Pimg_neu)
+        cue.data.condition = "BY"
+        probe.data.condition = "BY"
+        probe.data.correct_key = 'z' 
+        break;
+    }
+    Practice_trial_neg.push(fixation)
+    Practice_trial_neg.push(cue)
+    Practice_trial_neg.push(fixation)
+    Practice_trial_neg.push(probe)
+    Practice_trial_neg.push(feedback_trial)
+    Practice_trial_neg.push(fixation)
+  }
+  Practice_trial_neg.push(main_block_neg)
+
+// Negative img Block 1 //
+var ax_cpt_experiment1 = []
+
+var block = block1
+  for (i = 0; i < block.length; i++) {
+    switch (block[i]) {
+      case "AX":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Imgneg1)
+        cue.data.condition = "AX"
+        probe.data.condition = "AX"
+        probe.data.correct_key = 'm'
+        break;
+
+      case "BX":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Imgneg1)
+        cue.data.condition = "BX"
+        probe.data.condition = "BX"
+        probe.data.correct_key = 'z'
+        break;
+
+      case "AY":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Imgneu1)
+        cue.data.condition = "AY"
+        probe.data.condition = "AY"
+        probe.data.correct_key = 'z'
+        break;
+
+      case "BY":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Imgneu1)
+        cue.data.condition = "BY"
+        probe.data.condition = "BY"
+        probe.data.correct_key = 'z'
+        break;
+    }
+    ax_cpt_experiment1.push(fixation)
+    ax_cpt_experiment1.push(cue)
+    ax_cpt_experiment1.push(fixation)
+    ax_cpt_experiment1.push(probe)
+    ax_cpt_experiment1.push(fixation)  
+}
+
+// Negative img Block 2 //
+var ax_cpt_experiment1a = []
+ax_cpt_experiment1a.push(breakN)
+
+var block = block1a
+  for (i = 0; i < block.length; i++) {
+    switch (block[i]) {
+      case "AX":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Imgneg)
+        cue.data.condition = "AX"
+        probe.data.condition = "AX"
+        probe.data.correct_key = 'm'
+        break;
+
+      case "BX":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Imgneg)
+        cue.data.condition = "BX"
+        probe.data.condition = "BX"
+        probe.data.correct_key = 'z'
+        break;
+
+      case "AY":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Imgneu)
+        cue.data.condition = "AY"
+        probe.data.condition = "AY"
+        probe.data.correct_key = 'z'
+        break;
+
+      case "BY":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Imgneu)
+        cue.data.condition = "BY"
+        probe.data.condition = "BY"
+        probe.data.correct_key = 'z'
+        break;
+    }
+    ax_cpt_experiment1a.push(fixation)
+    ax_cpt_experiment1a.push(cue)
+    ax_cpt_experiment1a.push(fixation)
+    ax_cpt_experiment1a.push(probe)
+    ax_cpt_experiment1a.push(fixation)  
+}
+
+
+// Practice Block Positive //
+var Practice_trial_pos = []
+Practice_trial_pos.push(next_block)
+  
+  var block = practice_block_pos
+  for (i = 0; i < block.length; i++) {
+    switch (block[i]) {
+      case "AX":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Pimg_pos)
+        cue.data.condition = "AX"
+        probe.data.condition = "AX"
+        probe.data.correct_key = 'm'
+        break;
+
+      case "BX":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Pimg_pos)
+        cue.data.condition = "BX"
+        probe.data.condition = "BX"
+        probe.data.correct_key = 'z'
+        break;
+
+      case "AY":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Pimg_neu)
+        cue.data.condition = "AY"
+        probe.data.condition = "AY"
+        probe.data.correct_key = 'z'
+        break;
+
+      case "BY":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Pimg_neu)
+        cue.data.condition = "BY"
+        probe.data.condition = "BY"
+        probe.data.correct_key = 'z'
+        break;
+    }
+    Practice_trial_pos.push(fixation)
+    Practice_trial_pos.push(cue)
+    Practice_trial_pos.push(fixation)
+    Practice_trial_pos.push(probe)
+    Practice_trial_pos.push(feedback_trial)
+    Practice_trial_pos.push(fixation)
+  }
+  Practice_trial_pos.push(main_block_pos)
+
+  
+
+// Positive img Block 1 //
+  var ax_cpt_experiment2 = []
+  
+    var block = block2
+    for (i = 0; i < block.length; i++) {
+      switch (block[i]) {
+        case "AX":
+          cue = jQuery.extend(true, {}, A_cue)
+          probe = jQuery.extend(true, {}, Imgpos1)
+          cue.data.condition = "AX"
+          probe.data.condition = "AX"
+          probe.data.correct_key = 'm'
+          break;
+
+        case "BX":
+          cue = jQuery.extend(true, {}, B_cue)
+          probe = jQuery.extend(true, {}, Imgpos1)
+          cue.data.condition = "BX"
+          probe.data.condition = "BX"
+          probe.data.correct_key = 'z'
+          break;
+
+        case "AY":
+          cue = jQuery.extend(true, {}, A_cue)
+          probe = jQuery.extend(true, {}, Imgneu1)
+          cue.data.condition = "AY"
+          probe.data.condition = "AY"
+          probe.data.correct_key = 'z'
+          break;
+        case "BY":
+          cue = jQuery.extend(true, {}, B_cue)
+          probe = jQuery.extend(true, {}, Imgneu1)
+          cue.data.condition = "BY"
+          probe.data.condition = "BY"
+          probe.data.correct_key = 'z'
+          break;
+      }
+      ax_cpt_experiment2.push(fixation)
+      ax_cpt_experiment2.push(cue)
+      ax_cpt_experiment2.push(fixation)
+      ax_cpt_experiment2.push(probe)
+      ax_cpt_experiment2.push(fixation)
+    }
+
+    // Positive img Block 2 //
+  var ax_cpt_experiment2a = []
+  ax_cpt_experiment2a.push(breakP)
+
+  var block = block2a
+  for (i = 0; i < block.length; i++) {
+    switch (block[i]) {
+      case "AX":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Imgpos)
+        cue.data.condition = "AX"
+        probe.data.condition = "AX"
+        probe.data.correct_key = 'm'
+        break;
+
+      case "BX":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Imgpos)
+        cue.data.condition = "BX"
+        probe.data.condition = "BX"
+        probe.data.correct_key = 'z'
+        break;
+
+      case "AY":
+        cue = jQuery.extend(true, {}, A_cue)
+        probe = jQuery.extend(true, {}, Imgneu)
+        cue.data.condition = "AY"
+        probe.data.condition = "AY"
+        probe.data.correct_key = 'z'
+        break;
+      case "BY":
+        cue = jQuery.extend(true, {}, B_cue)
+        probe = jQuery.extend(true, {}, Imgneu)
+        cue.data.condition = "BY"
+        probe.data.condition = "BY"
+        probe.data.correct_key = 'z'
+        break;
+    }
+    ax_cpt_experiment2a.push(fixation)
+    ax_cpt_experiment2a.push(cue)
+    ax_cpt_experiment2a.push(fixation)
+    ax_cpt_experiment2a.push(probe)
+    ax_cpt_experiment2a.push(fixation)
+  }
+    
+    
+
+
+  timeline.push(preload);
+  
+  for(i=0; i<Practice_trial_neg.length; i++) {
+               timeline.push(Practice_trial_neg[i]);
+             }
+
+    for(i=0; i<ax_cpt_experiment1.length; i++) {
+               timeline.push(ax_cpt_experiment1[i]);
+             }
+
+   for(i=0; i<ax_cpt_experiment1a.length; i++) {
+               timeline.push(ax_cpt_experiment1a[i]);
+             }         
+
+    for(i=0; i<Practice_trial_pos.length; i++) {
+               timeline.push(Practice_trial_pos[i]);
+             }
+
+    for(i=0; i<ax_cpt_experiment2.length; i++) {
+               timeline.push(ax_cpt_experiment2[i]);
+             }
+
+    for(i=0; i<ax_cpt_experiment2a.length; i++) {
+               timeline.push(ax_cpt_experiment2a[i]);
+             }
+ 
+             
+function saveData(name, data){
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'write_data.php'); // 'write_data.php' is the path to the php file described above.
+          xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.send(JSON.stringify({filename: subject_name, filedata: data}));
+        }
+
+//JsPsych Runner
+  jsPsych.init({
+             timeline: timeline,
+             fullscreen: true,
+        on_finish: function() {
+        data = jsPsych.data.get().localSave('csv','mydata_N.csv');
+        saveData("AX-CPT_", data);
+        document.writeln("<div style=\"text-align: center; font-size: 24px;\">The experiment has ended. Thanks for participating!"+ "</p>Now an excel sheet will get generated on your computer, Please download that file and mail me at <strong>pragya.v@cbcs.ac.in</strong>" +"</p>You may close the window now.</div>");
+      }
+    });
+
+
+</script>
+</body>
+</html> 

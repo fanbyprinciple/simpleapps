@@ -62,7 +62,7 @@
         }
     }
         
-    // timeline.push(s_info)
+    timeline.push(s_info)
     
     /* define instructions trial */
     var instructions = {
@@ -77,7 +77,7 @@
       `,
       // post_trial_gap: 2000
     };
-    // timeline.push(instructions);
+    timeline.push(instructions);
     
     // let deg_resize = { 
     //   type: 'virtual-chinrest', blindspot_reps: 5, resize_units: 'deg', pixels_per_unit: 224.7, item_path: 'jspsych-6.3.0/examples/img/card.png', }; 
@@ -97,143 +97,144 @@
       type: 'fullscreen',
       fullscreen_mode: true
     };
-    // timeline.push(full);
+    timeline.push(full);
     
     var practice_stimuli = [
-      { stimulus: "img/c002.jpg", correct_response: null},
-      { stimulus: "img/c004.jpg", correct_response: null},
-      { stimulus: "img/c006.jpg", correct_response: null},
-      { stimulus: "img/c008.jpg", correct_response: null},
-      { stimulus: "img/c009.jpg", correct_response: null},
-      { stimulus: "img/f023.jpg", correct_response: ' '},
-      { stimulus: "img/f024.jpg", correct_response: ' '},
-      { stimulus: "img/f025.jpg", correct_response: ' '},
-      { stimulus: "img/f029.jpg", correct_response: ' '},
-      { stimulus: "img/f030.jpg", correct_response: ' '},
+      { stimulus: "img/c002.jpg", correct_response: 'space'},
+      { stimulus: "img/c004.jpg", correct_response: 'space'},
+      { stimulus: "img/c006.jpg", correct_response: 'space'},
+      { stimulus: "img/c008.jpg", correct_response: 'space'},
+      { stimulus: "img/c009.jpg", correct_response: 'space'},
+      { stimulus: "img/s001.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s003.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s005.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s008.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s009.jpg", correct_response: jsPsych.NO_KEYS},
+      
+      
     
     ]
 
     /* test trials */
     var test_stimuli = [
 
-      { stimulus: "img/c002.jpg", correct_response: null},
-      { stimulus: "img/c004.jpg", correct_response: null},
-      { stimulus: "img/c006.jpg", correct_response: null},
-      { stimulus: "img/c008.jpg", correct_response: null},
-      { stimulus: "img/c009.jpg", correct_response: null},
-      { stimulus: "img/c011.jpg", correct_response: null},
-      { stimulus: "img/c012.jpg", correct_response: null},
-      { stimulus: "img/c013.jpg", correct_response: null},
-      { stimulus: "img/c014.jpg", correct_response: null},
-      { stimulus: "img/c015.jpg", correct_response: null},
+      { stimulus: "img/c002.jpg", correct_response: 'space'},
+      { stimulus: "img/c004.jpg", correct_response: 'space'},
+      { stimulus: "img/c006.jpg", correct_response: 'space'},
+      { stimulus: "img/c008.jpg", correct_response: 'space'},
+      { stimulus: "img/c009.jpg", correct_response: 'space'},
+      { stimulus: "img/c011.jpg", correct_response: 'space'},
+      { stimulus: "img/c012.jpg", correct_response: 'space'},
+      { stimulus: "img/c013.jpg", correct_response: 'space'},
+      { stimulus: "img/c014.jpg", correct_response: 'space'},
+      { stimulus: "img/c015.jpg", correct_response: 'space'},
       
-      { stimulus: "img/c016.jpg", correct_response: null},
-      { stimulus: "img/c018.jpg", correct_response: null},
-      { stimulus: "img/c020.jpg", correct_response: null},
-      { stimulus: "img/c022.jpg", correct_response: null},
-      { stimulus: "img/c023.jpg", correct_response: null},
-      { stimulus: "img/c025.jpg", correct_response: null},
-      { stimulus: "img/c027.jpg", correct_response: null},
+      { stimulus: "img/c016.jpg", correct_response: 'space'},
+      { stimulus: "img/c018.jpg", correct_response: 'space'},
+      { stimulus: "img/c020.jpg", correct_response: 'space'},
+      { stimulus: "img/c022.jpg", correct_response: 'space'},
+      { stimulus: "img/c023.jpg", correct_response: 'space'},
+      { stimulus: "img/c025.jpg", correct_response: 'space'},
+      { stimulus: "img/c027.jpg", correct_response: 'space'},
       
-      { stimulus: "img/h001.jpg", correct_response: null},
-      { stimulus: "img/h004.jpg", correct_response: null},
-      { stimulus: "img/h005.jpg", correct_response: null},
-      { stimulus: "img/h008.jpg", correct_response: null},
-      { stimulus: "img/h009.jpg", correct_response: null},
-      { stimulus: "img/h011.jpg", correct_response: null},
-      { stimulus: "img/h012.jpg", correct_response: null},
-      { stimulus: "img/h013.jpg", correct_response: null},
-      { stimulus: "img/h015.jpg", correct_response: null},
-      { stimulus: "img/h016.jpg", correct_response: null},
+      { stimulus: "img/h001.jpg", correct_response: 'space'},
+      { stimulus: "img/h004.jpg", correct_response: 'space'},
+      { stimulus: "img/h005.jpg", correct_response: 'space'},
+      { stimulus: "img/h008.jpg", correct_response: 'space'},
+      { stimulus: "img/h009.jpg", correct_response: 'space'},
+      { stimulus: "img/h011.jpg", correct_response: 'space'},
+      { stimulus: "img/h012.jpg", correct_response: 'space'},
+      { stimulus: "img/h013.jpg", correct_response: 'space'},
+      { stimulus: "img/h015.jpg", correct_response: 'space'},
+      { stimulus: "img/h016.jpg", correct_response: 'space'},
       
-      { stimulus: "img/h017.jpg", correct_response: null},
-      { stimulus: "img/h018.jpg", correct_response: null},
-      { stimulus: "img/h020.jpg", correct_response: null},
-      { stimulus: "img/h022.jpg", correct_response: null},
-      { stimulus: "img/h023.jpg", correct_response: null},
-      { stimulus: "img/h026.jpg", correct_response: null},
-      { stimulus: "img/h030.jpg", correct_response: null},
-      { stimulus: "img/h031.jpg", correct_response: null},
-      { stimulus: "img/h032.jpg", correct_response: null},
-      { stimulus: "img/h033.jpg", correct_response: null},
+      { stimulus: "img/h017.jpg", correct_response: 'space'},
+      { stimulus: "img/h018.jpg", correct_response: 'space'},
+      { stimulus: "img/h020.jpg", correct_response: 'space'},
+      { stimulus: "img/h022.jpg", correct_response: 'space'},
+      { stimulus: "img/h023.jpg", correct_response: 'space'},
+      { stimulus: "img/h026.jpg", correct_response: 'space'},
+      { stimulus: "img/h030.jpg", correct_response: 'space'},
+      { stimulus: "img/h031.jpg", correct_response: 'space'},
+      { stimulus: "img/h032.jpg", correct_response: 'space'},
+      { stimulus: "img/h033.jpg", correct_response: 'space'},
       
-      { stimulus: "img/h034.jpg", correct_response: null},
-      { stimulus: "img/h037.jpg", correct_response: null},
-      { stimulus: "img/h038.jpg", correct_response: null},
+      { stimulus: "img/h034.jpg", correct_response: 'space'},
+      { stimulus: "img/h037.jpg", correct_response: 'space'},
+      { stimulus: "img/h038.jpg", correct_response: 'space'},
       
-      { stimulus: "img/k001.jpg", correct_response: null},
-      { stimulus: "img/k004.jpg", correct_response: null},
-      { stimulus: "img/k005.jpg", correct_response: null},
-      { stimulus: "img/k006.jpg", correct_response: null},
-      { stimulus: "img/k009.jpg", correct_response: null},
-      { stimulus: "img/k012.jpg", correct_response: null},
-      { stimulus: "img/k014.jpg", correct_response: null},
-      { stimulus: "img/k015.jpg", correct_response: null},
-      { stimulus: "img/k018.jpg", correct_response: null},
-      { stimulus: "img/k021.jpg", correct_response: null},
+      { stimulus: "img/k001.jpg", correct_response: 'space'},
+      { stimulus: "img/k004.jpg", correct_response: 'space'},
+      { stimulus: "img/k005.jpg", correct_response: 'space'},
+      { stimulus: "img/k006.jpg", correct_response: 'space'},
+      { stimulus: "img/k009.jpg", correct_response: 'space'},
+      { stimulus: "img/k012.jpg", correct_response: 'space'},
+      { stimulus: "img/k014.jpg", correct_response: 'space'},
+      { stimulus: "img/k015.jpg", correct_response: 'space'},
+      { stimulus: "img/k018.jpg", correct_response: 'space'},
+      { stimulus: "img/k021.jpg", correct_response: 'space'},
       
-      { stimulus: "img/k022.jpg", correct_response: null},
-      { stimulus: "img/k023.jpg", correct_response: null},
-      { stimulus: "img/k024.jpg", correct_response: null},
-      { stimulus: "img/k025.jpg", correct_response: null},
-      { stimulus: "img/k026.jpg", correct_response: null},
-      { stimulus: "img/k028.jpg", correct_response: null},
-      { stimulus: "img/k029.jpg", correct_response: null},
-      { stimulus: "img/k031.jpg", correct_response: null},
-      { stimulus: "img/k032.jpg", correct_response: null},
-      { stimulus: "img/k036.jpg", correct_response: null},
+      { stimulus: "img/k022.jpg", correct_response: 'space'},
+      { stimulus: "img/k023.jpg", correct_response: 'space'},
+      { stimulus: "img/k024.jpg", correct_response: 'space'},
+      { stimulus: "img/k025.jpg", correct_response: 'space'},
+      { stimulus: "img/k026.jpg", correct_response: 'space'},
+      { stimulus: "img/k028.jpg", correct_response: 'space'},
+      { stimulus: "img/k029.jpg", correct_response: 'space'},
+      { stimulus: "img/k031.jpg", correct_response: 'space'},
+      { stimulus: "img/k032.jpg", correct_response: 'space'},
+      { stimulus: "img/k036.jpg", correct_response: 'space'},
       
-      { stimulus: "img/k037.jpg", correct_response: null},
-      { stimulus: "img/k039.jpg", correct_response: null},
-      { stimulus: "img/k040.jpg", correct_response: null},
-      { stimulus: "img/k044.jpg", correct_response: null},
-      { stimulus: "img/k045.jpg", correct_response: null},
+      { stimulus: "img/k037.jpg", correct_response: 'space'},
+      { stimulus: "img/k039.jpg", correct_response: 'space'},
+      { stimulus: "img/k040.jpg", correct_response: 'space'},
+      { stimulus: "img/k044.jpg", correct_response: 'space'},
+      { stimulus: "img/k045.jpg", correct_response: 'space'},
       
-      { stimulus: "img/t004.jpg", correct_response: null},
-      { stimulus: "img/t005.jpg", correct_response: null},
-      { stimulus: "img/t006.jpg", correct_response: null},
-      { stimulus: "img/t007.jpg", correct_response: null},
-      { stimulus: "img/t012.jpg", correct_response: null},
+      { stimulus: "img/t004.jpg", correct_response: 'space'},
+      { stimulus: "img/t005.jpg", correct_response: 'space'},
+      { stimulus: "img/t006.jpg", correct_response: 'space'},
+      { stimulus: "img/t007.jpg", correct_response: 'space'},
+      { stimulus: "img/t012.jpg", correct_response: 'space'},
       
       
-      { stimulus: "img/s001.jpg", correct_response: null},
-      { stimulus: "img/s003.jpg", correct_response: null},
-      { stimulus: "img/s005.jpg", correct_response: null},
-      { stimulus: "img/s008.jpg", correct_response: null},
-      { stimulus: "img/s009.jpg", correct_response: null},
-      { stimulus: "img/s012.jpg", correct_response: null},
-      { stimulus: "img/s013.jpg", correct_response: null},
-      { stimulus: "img/s014.jpg", correct_response: null},
-      { stimulus: "img/s015.jpg", correct_response: null},
-      { stimulus: "img/s016.jpg", correct_response: null},
+      { stimulus: "img/s001.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s003.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s005.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s008.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s009.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s012.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s013.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s014.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s015.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s016.jpg", correct_response: jsPsych.NO_KEYS},
       
-      { stimulus: "img/s018.jpg", correct_response: null},
-      { stimulus: "img/s021.jpg", correct_response: null},
-      { stimulus: "img/s023.jpg", correct_response: null},
-      { stimulus: "img/s026.jpg", correct_response: null},
-      { stimulus: "img/s029.jpg", correct_response: null},
+      { stimulus: "img/s018.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s021.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s023.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s026.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/s029.jpg", correct_response: jsPsych.NO_KEYS},
       
-      { stimulus: "img/f002.jpg", correct_response: ' '},
-      { stimulus: "img/f003.jpg", correct_response: ' '},
-      { stimulus: "img/f005.jpg", correct_response: ' '},
-      { stimulus: "img/f006.jpg", correct_response: ' '},
-      { stimulus: "img/f011.jpg", correct_response: ' '},
-      { stimulus: "img/f012.jpg", correct_response: ' '},
-      { stimulus: "img/f015.jpg", correct_response: ' '},
-      { stimulus: "img/f016.jpg", correct_response: ' '},
-      { stimulus: "img/f020.jpg", correct_response: ' '},
-      { stimulus: "img/f022.jpg", correct_response: ' '},
+      { stimulus: "img/f002.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f003.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f005.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f006.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f011.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f012.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f015.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f016.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f020.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f022.jpg", correct_response: jsPsych.NO_KEYS},
       
-      { stimulus: "img/f023.jpg", correct_response: ' '},
-      { stimulus: "img/f024.jpg", correct_response: ' '},
-      { stimulus: "img/f025.jpg", correct_response: ' '},
-      { stimulus: "img/f029.jpg", correct_response: ' '},
-      { stimulus: "img/f030.jpg", correct_response: ' '},
+      { stimulus: "img/f023.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f024.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f025.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f029.jpg", correct_response: jsPsych.NO_KEYS},
+      { stimulus: "img/f030.jpg", correct_response: jsPsych.NO_KEYS},
     
 
     ];
   
-    //instructions for practice
     var instructions_practice = {
       type: "html-keyboard-response",
       stimulus: `
@@ -248,14 +249,12 @@
       `,
       // post_trial_gap: 2000
     };
-    // timeline.push(instructions_practice)
+    timeline.push(instructions)
     
-    
-    // Practice trial
     var practice1 = { 
       type: "image-keyboard-response",
       stimulus: jsPsych.timelineVariable('stimulus'),
-      choices: [' '],
+      choices: ['SPACE'],
       stimulus_duration: 750,
       trial_duration: 500,
       response_ends_trial:false,
@@ -269,34 +268,36 @@
       on_finish: function(data){
         data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response); 
         
-        console.log("response: " , data.response," correct: ", data.correct_response)
-        if (data.correct){
+        if (data.correct == data.correct_response){
           trl_correct = 1
-        } else {
+          } else {
+          
           trl_correct = 0
-        }
-        
+          }
+        console.log(trl_correct)
       }
     }
+    
     
     //Feedback Trial
     var feedback_trial = {
         type: 'html-keyboard-response',
         stimulus: function(){
-          if (trl_correct == 1){
-            html = '<div style="font-size: 30px;color: green;">Correct!</div>';
-          } else{
-            html = '<div style="font-size: 30px;color: red;">Wrong!</div>';
-          }
-          return html
-        },
+        if (trl_correct == 1){
+          html = '<div style="font-size: 30px;color: green;">Correct!</div>';
+        } else{
+          html = '<div style="font-size: 30px;color: red;">Wrong!</div>';
+        }
+
+        return html
+      },
         trial_duration: 500,
     };
 
     var fixation = {
       type: 'html-keyboard-response',
       stimulus: '<div style="font-size:60px;">+</div>',
-      choices: null,
+      choices: jsPsych.NO_KEYS,
       trial_duration: 500,
       // trial_duration: function(){
       //   return jsPsych.randomization.sampleWithoutReplacement([500], 1)[0];
@@ -307,35 +308,18 @@
     }
     
      var practice_procedure = {
-      timeline: [fixation, practice1, feedback_trial],
+      timeline: [fixation, test1, feedback_trial],
       timeline_variables: practice_stimuli,
       repetitions: 1,
       randomize_order: true,
     }
     
     timeline.push(practice_procedure)
-    
-    var instructions_main= {
-      type: "html-keyboard-response",
-      stimulus: `
-        <p> Now the main experiment starts!</p>
-        
-        <p> There will be no feedback. Best of luck! </p>
-        
-        <p>If the item is <strong>Househould objects</strong>, 
-        press the <strong>SPACE key</strong> on the keyboard as fast and accurately as you can.</p>
-        <p>If the item is <strong>Food (edible)</strong> or <strong>Stationary objects</strong>, do not press anything.</p>
-       
-        <p>Press any key to begin.</p>
-      `,
-      // post_trial_gap: 2000
-    };
-    timeline.push(instructions_main)
 
     var test1 = { 
       type: "image-keyboard-response",
       stimulus: jsPsych.timelineVariable('stimulus'),
-      choices: [' '],
+      choices: ['SPACE'],
       stimulus_duration: 750,
       trial_duration: 500,
       response_ends_trial:false,
@@ -363,7 +347,7 @@
     var test2 = { 
       type: "image-keyboard-response",
       stimulus: jsPsych.timelineVariable('stimulus'),
-      choices: [' '],
+      choices: ['SPACE'],
       stimulus_duration: 500,
       trial_duration: 1000,
       response_ends_trial:false,
@@ -382,7 +366,7 @@
     var test3 = { 
       type: "image-keyboard-response",
       stimulus: jsPsych.timelineVariable('stimulus'),
-      choices: [' '],
+      choices: ['SPACE'],
       stimulus_duration: 500,
       trial_duration: 1000,
       response_ends_trial:false,

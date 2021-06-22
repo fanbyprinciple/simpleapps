@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+  
+    "name": "GTmetrix speed test",
+    "description": "This extension will analyze a page loading speed using GTmetrix",
+    "version": "1.0",
+  
+    "browser_action": {
+     "default_icon": "correct.png",
+     "default_popup": "popup.html"
+    },
+
+    "background": {
+    "scripts": ["popup.js"],
+    "persistent": false
+    },
+
+    "permissions": ["storage", "alarms", "activeTab"],
+    "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
+}

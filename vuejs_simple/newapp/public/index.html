@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.7/vue.min.js"></script>
+</head>
+<style>
+    .body-on {
+        background-color: #dddddd;
+    }
+    
+    .body-off {
+        background-color: #000000;
+    }
+    
+    .height-2 {
+        min-height: 10em;
+    }
+    
+    .btn {
+        border-radius: 5em;
+        height: 100px;
+        width: 100px;
+        outline: none;
+        background: none 0;
+        border: solid thin #444444;
+        color: #eeeeee;
+        font-size: 3em;
+    }
+    
+    .btn-danger {
+        background-color: maroon;
+        color: #dddddd;
+    }
+    
+    .btn-success {
+        background-color: green;
+        color: #000000;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+</style>
+
+<body class="text-center body" v-class="body-on: lights, body-off: !lights">
+    <button v-on="click: flipSwitch" v-class="btn-danger: lights, btn-success: !lights" class="btn">
+        <span class="fa fa-power-off"></span>
+     </button>
+</body>
+
+<script>
+    new Vue({
+        el: 'body',
+        data: {
+            lights: true
+        },
+        methods: {
+            flipSwitch: function() {
+                this.lights = !this.lights;
+            }
+        }
+    });
+</script>
+s
+
+<body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+</body>
+
+</html>

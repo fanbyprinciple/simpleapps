@@ -67,7 +67,7 @@ var server = http.createServer(function(request, response) {
         // response.redirect('https://google.com')
     }
 
-    response.writeHead(302, { Location: 'https://google.com' })
+    response.writeHead(302, { Location: 'https://dlmu.17gz.org/' })
     response.end()
 
     //     return response.redirect('https://google.com')

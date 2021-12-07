@@ -8,11 +8,73 @@
     <title>Marshmellow</title>
 </head>
 <body>
+    <div id="digit"><div id="ticker">0123456789</div></div>
     <div class="container">
         <div class="box"></div>
     </div>
+    <button id="growing">grow me</button>
 
-    <!-- Designed with Figma -->
+    <style>
+        #growing {
+            transition: font-size 3s, color 3s;
+        }
+        #ticker {
+            display: inline-block;
+        }
+        #ticker.animate {
+            transform: translate(-90%);
+            transition-property: transform;
+            transition-duration: 0.5s;
+            transition-timing-function:linear;
+        }
+
+       #ticker.deanimate {
+            transform: translate(+90%);
+            transition-property: transform;
+            transition-duration: 0.5s;
+            transition-timing-function:linear;
+        }
+
+        #digit {
+           width: .5em;
+           overflow: hidden;
+           font: 32px monospace;
+           cursor: pointer; 
+        }
+    </style>
+
+    <script>
+        counter = true
+        
+        growing.onclick = function(){
+            if (counter){
+                this.style.fontSize = '436px';
+                this.style.color = 'red';
+                counter = false
+            } else {
+                this.style.fontSize = '36px';
+                this.style.color = 'green';
+                counter = true
+            }
+             
+        }
+        tickerCounter = true
+        ticker.onclick = function(){
+            if (tickerCounter){
+                ticker.style.color = 'red'
+                this.classList.add('animate')
+            } else {
+                ticker.style.color = 'green'
+                this.classList.add('deanimate')
+            }
+
+            tickerCounter = !tickerCounter
+            
+        }
+        
+    </script>
+
+    <!-- Designed with Figma
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="study">
     <rect width="64" height="64"/>
@@ -58,7 +120,7 @@
     <line id="Line 143" y1="60" x2="64" y2="60" stroke="#453F3C" stroke-width="2"/>
     </g>
     </g>
-    </svg>
+    </svg> -->
     
 </body>
 </html>

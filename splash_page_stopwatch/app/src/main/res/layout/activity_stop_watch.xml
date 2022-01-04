@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/bgcircle"
-        android:layout_width="276dp"
+        android:layout_width="376dp"
         android:layout_height="247dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="50dp"
@@ -21,29 +21,60 @@
 
     <ImageView
         android:id="@+id/icanchor"
-        android:layout_width="358dp"
-        android:layout_height="357dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
         android:layout_marginTop="8dp"
-        app:layout_goneMarginTop="0dp"
+        android:layout_marginEnd="8dp"
         android:src="@drawable/icanchor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_goneMarginTop="0dp" />
 
+
+    <Chronometer
+        android:id="@+id/timerHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="#FFF"
+        android:textSize="62sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bgcircle" />
 
     <Button
         android:id="@+id/btnstart"
         android:layout_width="280dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="72dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="108dp"
+        android:background="@drawable/bgbtngreen"
         android:text="Start"
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textSize="20sp"
-        android:background="@drawable/bgbtngreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnstop"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Stop"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:background="@drawable/btnred"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

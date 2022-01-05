@@ -12,4 +12,16 @@
         android:duration="4000"
         />
 
+<!--    <rotate-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        android:fromDegrees="180"-->
+<!--        android:toDegrees="360"-->
+<!--        android:scaleX="-1"-->
+<!--        android:scaleY="-1"-->
+<!--        android:pivotX="50%"-->
+<!--        android:pivotY="50%"-->
+<!--        android:repeatCount="infinite"-->
+<!--        android:duration="2000"-->
+<!--        />-->
+
 </set>

@@ -2,7 +2,10 @@ package com.example.splash_page_stopwatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -38,6 +41,8 @@ public class StopWatchAct extends AppCompatActivity {
 
         btnstart.setTypeface(MMedium);
 
+
+
         btnstart.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -48,6 +53,33 @@ public class StopWatchAct extends AppCompatActivity {
                 timerHere.setBase(SystemClock.elapsedRealtime());
                 timerHere.start();
 
+                ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP,150);
+
+            }
+        });
+
+        int limit=30000;
+
+        timerHere.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                long elapsed = SystemClock.elapsedRealtime() - chronometer.getBase();
+                boolean setAlarm=true;
+                if (setAlarm) {
+                    if (elapsed >= limit - 5000) {
+                        chronometer.setTextColor(Color.RED);
+                        ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+                        toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
+                    } else if (elapsed == limit) {
+
+                        ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+                        toneGen1.startTone(ToneGenerator.TONE_CDMA_ABBR_ALERT, 300);
+                        setAlarm = false;
+                    }
+                } else {
+                    chronometer.setTextColor(Color.WHITE);
+                }
             }
         });
 
@@ -58,8 +90,12 @@ public class StopWatchAct extends AppCompatActivity {
                   timerHere.stop(); //pause
                   btnstop.animate().alpha(0).translationY(100).setDuration(300).start();
                   btnstart.animate().alpha(1).setDuration(300).start();
+//                  ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+//                  toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP,150);
             }
         });
+
+
 
     }
 }

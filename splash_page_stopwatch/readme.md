@@ -29,4 +29,6 @@ Tutorial finished
 2. look at the background
 3. Change the UI
 4. add a stop and reset button
-5. very important add beep
+5. very important add beep - beep added
+6. logic for beep
+7. input interval and timer set.

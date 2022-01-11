@@ -7,15 +7,16 @@
     android:background="#211D44"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:id="@+id/bgcircle"
         android:layout_width="376dp"
         android:layout_height="247dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="50dp"
         android:src="@drawable/bgcircle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,17 +28,17 @@
         android:layout_marginEnd="8dp"
         android:src="@drawable/icanchor"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_goneMarginTop="0dp" />
-
 
     <Chronometer
         android:id="@+id/timerHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="260dp"
         android:layout_marginEnd="8dp"
         android:textColor="#FFF"
         android:textSize="62sp"
@@ -46,13 +47,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bgcircle" />
 
+    <EditText
+        android:id="@+id/timerBeepFreq"
+        android:layout_width="253dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="92dp"
+        android:background="@null"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#FFF"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/timerHere">
+
+        <requestFocus />
+    </EditText>
+
     <Button
         android:id="@+id/btnstart"
         android:layout_width="280dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="84dp"
         android:background="@drawable/bgbtngreen"
         android:text="Start"
         android:textAllCaps="false"
@@ -67,18 +85,17 @@
         android:id="@+id/btnstop"
         android:layout_width="280dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="44dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btnred"
         android:text="Stop"
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textSize="20sp"
-        android:background="@drawable/btnred"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

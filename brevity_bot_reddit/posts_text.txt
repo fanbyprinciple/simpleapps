@@ -1,0 +1,9 @@
+
+--------------------------------
+New notebook ! can bot refer to this? : 
+[https://colab.research.google.com/github/google/eng-edu/blob/master/ml/pc/exercises/image\_classification\_part2.ipynb](https://colab.research.google.com/github/google/eng-edu/blob/master/ml/pc/exercises/image_classification_part2.ipynb)
+
+&#x200B;
+
+yoyo
+--------------------------------

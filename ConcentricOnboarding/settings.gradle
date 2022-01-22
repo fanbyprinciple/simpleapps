@@ -1,0 +1,3 @@
+include ':ConcentricOnboarding'
+include ':app'
+rootProject.name = "ConcentricOnboardingDemo"

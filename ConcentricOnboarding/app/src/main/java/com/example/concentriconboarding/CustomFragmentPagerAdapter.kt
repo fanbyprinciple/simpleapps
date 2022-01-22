@@ -11,7 +11,8 @@ class CustomFragmentPagerAdapter(fm: FragmentManager) :
         return DummyFragment.newInstance(
             backgroundColorArray[(position % titleArray.count())],
             resourceArray[(position % titleArray.count())],
-            titleArray[(position % titleArray.count())]
+            titleArray[(position % titleArray.count())],
+            paraArray[(position % titleArray.count())]
         )
     }
 

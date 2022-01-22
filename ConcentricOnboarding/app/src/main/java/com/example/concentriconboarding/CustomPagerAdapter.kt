@@ -34,6 +34,9 @@ class CustomPagerAdapter(
         layout.findViewById<TextView>(R.id.fragment_textview).text =
             titleArray[(position % titleArray.count())]
 
+        layout.findViewById<TextView>(R.id.fragment_para_textview).text =
+            paraArray[(position % titleArray.count())]
+
         (layout as? ConcentricOnboardingLayout)?.clipPathProvider =
             concentricOnboardingClipPathProviders[(position % titleArray.count())]
 

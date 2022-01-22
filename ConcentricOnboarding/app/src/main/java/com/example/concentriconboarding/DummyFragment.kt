@@ -14,11 +14,13 @@ import com.jem.concentriconboardingdemo.R
 private const val ARG_BACKGROUND_COLOR = "param1"
 private const val ARG_RESOURCE = "param2"
 private const val ARG_TITLE = "param3"
+private const val ARG_PARA = "param4"
 
 class DummyFragment : Fragment() {
     private var param1: Int? = null
     private var param2: Int? = null
     private var param3: String? = null
+    private var param4: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,7 @@ class DummyFragment : Fragment() {
             param1 = it.getInt(ARG_BACKGROUND_COLOR)
             param2 = it.getInt(ARG_RESOURCE)
             param3 = it.getString(ARG_TITLE)
+            param4 = it.getString(ARG_PARA)
         }
     }
 
@@ -48,17 +51,21 @@ class DummyFragment : Fragment() {
 
             findViewById<TextView>(R.id.fragment_textview).text =
                 param3 ?: "Hello fellow developer!"
+
+            findViewById<TextView>(R.id.fragment_para_textview).text =
+                param4 ?: "Hello world!"
         }
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: Int, param2: Int, param3: String) =
+        fun newInstance(param1: Int, param2: Int, param3: String, param4: String) =
             DummyFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_BACKGROUND_COLOR, param1)
                     putInt(ARG_RESOURCE, param2)
                     putString(ARG_TITLE, param3)
+                    putString(ARG_PARA, param4)
                 }
             }
     }

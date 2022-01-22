@@ -1,9 +1,13 @@
-# Changelog
+# Changelog : `22-01-22`
 
-1. Added new json files for animation and added new value in dummy_fragment. not able to link though.
+1. Added new json files for animation and added new value in `dummy_fragment`. not able to link though.
+![](modified_ui.gif)
 
+2. Added changes to `DummyFragment.kt` added new param and made changes.
+    More changes in `datavalues.kt` and `CustomPagerAdapter`. and `CustomFragmentPagerAdapter`.
+    able to modify the ui.
 
-
+![](para_modified.gif)
 
 
 

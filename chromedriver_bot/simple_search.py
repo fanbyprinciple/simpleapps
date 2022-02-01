@@ -17,11 +17,11 @@ if os.path.exists("cookies.pkl"):
     for cookie in cookies:
         driver.add_cookie(cookie)
 
-driver.get("https://www.google.com")
+driver.get("https://www.twitter.com")
 
-driver.find_element_by_xpath("//input").click()
-driver.find_element_by_xpath("//input").send_keys("Carmen Sandiego")
-driver.find_element_by_xpath("//input").send_keys(u'\ue007')
+# driver.find_element_by_xpath("//input").click()
+# driver.find_element_by_xpath("//input").send_keys("Carmen Sandiego")
+# driver.find_element_by_xpath("//input").send_keys(u'\ue007')
 
 pickle.dump( driver.get_cookies() , open("cookies.pkl","wb"))
 

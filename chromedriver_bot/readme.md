@@ -6,4 +6,9 @@
 chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\selenum\ChromeProfile"
 
 
+# twitter auto
+
+`python twitter_auto.py`
+
+Twitter auto is currently working.
 

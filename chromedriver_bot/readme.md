@@ -12,3 +12,9 @@ chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\selenum\ChromeProfil
 
 Twitter auto is currently working.
 
+
+https://www.browserstack.com/guide/find-element-by-xpath-in-selenium
+
+# persistant whatsapp.py
+
+creating a 

@@ -8,20 +8,24 @@ from selenium.webdriver.common.keys import Keys
 
 import time 
 
-# from chatterbot import ChatBot
+#supress all warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+from chatterbot import ChatBot
 #bot = ChatBot('fan')
 
-# bot = ChatBot(
-#     'fan',  
-#     logic_adapters=[
-#         'chatterbot.logic.BestMatch',
-#         'chatterbot.logic.TimeLogicAdapter'],
-# )
+bot = ChatBot(
+    'fan',  
+    logic_adapters=[
+        'chatterbot.logic.BestMatch',
+        'chatterbot.logic.TimeLogicAdapter'],
+)
 
-# Inport ListTrainer
-# from chatterbot.trainers import ListTrainer
+#import ListTrainer
+from chatterbot.trainers import ListTrainer
 
-# trainer = ListTrainer(bot)
+trainer = ListTrainer(bot)
 
 # trainer.train([
 # 'Hi',
@@ -35,6 +39,10 @@ import time
 # 'Okay Thanks',
 # 'No Problem! Have a Good Day!'
 # ])
+
+trainer.train(
+    "chatterbot.corpus.english"
+)
 
 chrome_options = Options()
 chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
@@ -74,13 +82,14 @@ def search_and_send_messages(names):
 def search_and_send_custom_messages(names):
     #previous chat wouldbe considered
     for name in names:
-        print("searching for ", name)
+        print("\nsearching for ", name, "\n")
         driver.find_element_by_xpath("(//div[@role='textbox'])[1]").send_keys(name)
         driver.find_element_by_xpath("(//div[@role='textbox'])[1]").send_keys(Keys.RETURN)
         time.sleep(2)
 
-        print("looking for last message")
-        input_text = driver.find_element_by_xpath("//div[@class='_1Gy50'])[last()]").text # not working
+        print("\nlooking for last message\n")
+        # input_text = driver.find_element_by_xpath("//div[@class='_1Gy50'])[last()]").text # not working
+        input_text = "wassup"
         output_text = chatter_bot_interaction(input_text)
         driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(output_text)
         driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
@@ -88,14 +97,14 @@ def search_and_send_custom_messages(names):
 
 def chatter_bot_interaction(input_text):
     print("input : ", input_text)
-    # response = bot.get_response('I have a complaint.')
+    response = bot.get_response('what is the nature of social relationships to you?')
 
-    # print("Bot Response:", response)
-    response = f"This is bot generated message. Pay no heed. Message at {str(time.perf_counter())}"
+    print("Bot Response:", response)
+    response = f"This is a ai bot generated message. Pay no heed. Message at {str(time.perf_counter())} ::: {response}"
     if(response):
-        return f"This is bot generated message. Pay no heed. Message at {str(time.perf_counter())}"
-    else :
         return response
+    else :
+        return f"fan bot is offline right now."
 
 search_and_send_custom_messages(names)
 

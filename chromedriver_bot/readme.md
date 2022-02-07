@@ -30,12 +30,19 @@ https://www.browserstack.com/guide/find-element-by-xpath-in-selenium
 1. selenium get the last message out
 2. create a chatbot using ml - openai. can we use /answer endpoint? - done
 3. integrate open_ai_bot.py and persistant_whatsapp.py
+4. trying hugging face. 
+
 
 openai keys from : "https://beta.openai.com/account/api-keys"
 
 # Chatbot trained on openai
 
 ![](gpt3_chatbot.gif)
+
+# hugging face
+
+https://www.kaggle.com/fanbyprinciple/hugging-face-conversational-ai/edit
+
 
 # whatsapp integration complete
 

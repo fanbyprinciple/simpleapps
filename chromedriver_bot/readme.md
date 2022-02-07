@@ -37,4 +37,13 @@ openai keys from : "https://beta.openai.com/account/api-keys"
 
 ![](gpt3_chatbot.gif)
 
+# whatsapp integration complete
 
+it is a maniac. Right now.
+
+`gpt_talk_to_one_whatsapp.py`
+
+![](maniac.png)
+
+Need -  to have better training data.
+        to wait for messages again.

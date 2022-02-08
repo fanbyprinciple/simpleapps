@@ -47,6 +47,7 @@ https://www.kaggle.com/fanbyprinciple/hugging-face-conversational-ai/edit
 # whatsapp integration complete
 
 it is a maniac. Right now.
+Can talk to one person.
 
 `gpt_talk_to_one_whatsapp.py`
 
@@ -54,3 +55,9 @@ it is a maniac. Right now.
 
 Need -  to have better training data.
         to wait for messages again.
+
+# training a bot to extract  all the pdf and and download and summarise
+
+`whatsapp_pdf_text_summarisation.py`
+
+able to download the file.

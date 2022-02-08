@@ -10,7 +10,7 @@ for i in full_text:
 new_file = ". ".join(new_conv)
 new_file = new_file.replace('\"', '\'')
 new_file = new_file.replace('Tanushree:', 'fanbot:')
-new_file = new_file.replace('Ashwin:', 'You:')
+new_file = new_file.replace('Ashwin:', 'you:')
 
 # limit on new file
 new_file = new_file[:2049]

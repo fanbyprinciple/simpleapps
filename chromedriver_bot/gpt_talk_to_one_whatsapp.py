@@ -96,8 +96,12 @@ def chatter_bot_interaction(input_text):
     else :
         return f"fan bot is offline right now."
 
+
+
 def chat_with_a_person(name, session_prompt):
     continue_chat = True
+    prev_timestamp = 0
+
     # get to dms
     print("\nsearching for ", name, "\n")
     driver.find_element_by_xpath("(//div[@role='textbox'])[1]").send_keys(name)
@@ -106,8 +110,19 @@ def chat_with_a_person(name, session_prompt):
 
     while(1):
         print(f"\nlooking for last message, continue_chat: {continue_chat}\n")
-        last_text = driver.find_element_by_xpath("(//div[@class='_22Msk'])[last()]").text.split('\n')[0]
-        
+        last_text = driver.find_element_by_xpath("(//div[@class='_22Msk'])[last()]").text.split('\n')
+        print(last_text)
+        if(len(last_text)<2):
+            last_timestamp = last_text[0]
+            last_text = ""
+        else :
+            last_timestamp = last_text[1]
+            if('fanbot :' in last_text[0]):
+                last_text = last_text[0].split('fanbot :')[1].strip()
+            else:
+                last_text = last_text[0].strip()
+
+        print("\n",last_timestamp, last_text, "\n")
         # output_text = chatter_bot_interaction(last_text)
         # print('you:', output_text)
         
@@ -120,21 +135,35 @@ def chat_with_a_person(name, session_prompt):
             driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
     
         if (continue_chat):
-            incoming_msg = "You: "+ last_text
-            print(incoming_msg)
-            answer = ask(incoming_msg, session_prompt)
-            session_prompt = append_interaction_to_chat_log(incoming_msg, answer, session_prompt)
-            print(f"fanbot: {answer}")
-            input('press to continue and send.')
+            incoming_msg = last_text
+            #print(incoming_msg)
+
+            # to check whether I am replying to myself
+            if(prev_timestamp != last_timestamp):
+                print(f"you: {incoming_msg}")
+                time.sleep(2)
+                answer = ask(incoming_msg, session_prompt)
+                print(f"fanbot: {answer}")
+                a = input('press a to continue and send.')
+                if(a.lower() =='a'):
+                    session_prompt = append_interaction_to_chat_log(incoming_msg, answer, session_prompt)
+                    # driver.find_element_by_xpath("//div[@title='Type a message']").send_keys('fanbot: '+answer)
+                    # driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
+                else:
+                    continue
+            else: 
+                answer = f"No response from the other side. bye." 
+                print(answer)
+                # driver.find_element_by_xpath("//div[@title='Type a message']").send_keys('fanbot: '+answer)
+                # driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
+                break
         
-            driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(answer)
-            driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
-
-
+        prev_timestamp = last_timestamp
 
 
 print("Calling chat_with_a_person().")
 # search_and_send_custom_messages(names)
-chat_with_a_person("Tanushree", session_prompt)
+#chat_with_a_person("Tanushree", session_prompt)
+call_bot(session_prompt)
 
 

@@ -52,7 +52,6 @@ def find_all_pdfs(name):
     driver.find_element(By.XPATH, "(//div[@role='textbox'])[1]").send_keys(Keys.RETURN)
     time.sleep(2)
 
-
     # print("\nlooking for message\n")
     # all_text = driver.find_elements(By.XPATH, "(//div[@class='_22Msk'])")
 
@@ -75,8 +74,6 @@ def find_all_pdfs(name):
         if ".pdf" in pdf_name:
             driver.find_element(By.XPATH, f"(//span[@data-testid='audio-download'])[{i+1}]").click()
             input('Getting the first download. input to continue')
-
-
 
     #driver.find_element(By.XPATH("//div[@title='Type a message']")).send_keys(f"This is bot generated message. Sorry for the trouble. Message at {str(time.time())}")
     #driver.find_element(By.XPATH("//div[@title='Type a message']")).send_keys(Keys.RETURN)

@@ -5,7 +5,15 @@ from selenium.webdriver import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 
-import time 
+import openai 
+import time
+
+from credentials import openai_key
+from os.path import exists
+import wget
+import pathlib
+import pdfplumber
+import numpy as np
 
 #supress all warnings
 # import warnings
@@ -24,14 +32,18 @@ driver.get("https://web.whatsapp.com/")
 input("Press anything after QR scan")
 time.sleep(1)
 
+
+openai.api_key = openai_key["key"]
+completion = openai.Completion()
+
 name = "Tanushree"
-download_path = "C:\Users\aonno\Downloads"
+download_path = "C:\\Users\\aonno\\Downloads\\"
 
 def showPaperSummary(pdfpath):
     tldr_tag = "\n tl;dr:"
     engine_list = openai.Engine.list() 
 
-    paperFilePath = "random.pdf"
+    paperFilePath = pdfpath
     paperContent = pdfplumber.open(paperFilePath).pages
 
     for page in paperContent:    
@@ -58,8 +70,9 @@ def find_all_pdfs(name):
     # we need all documents
     print("\nLooking for pdfs\n")
     all_docs = driver.find_elements(By.XPATH, "(//div[@class='M_gdf'])")
-
+    print(all_docs)
     for i, t in enumerate(all_docs):
+        pdfpath = download_path
         splitting = t.text.split("\n")
         print(splitting)
         if (len(splitting) == 3):
@@ -71,11 +84,28 @@ def find_all_pdfs(name):
 
         print(i, " : ", pdf_name)
         
+        
         if ".pdf" in pdf_name:
-            driver.find_element(By.XPATH, f"(//span[@data-testid='audio-download'])[{i+1}]").click()
-            input('Getting the first download. input to continue')
+            print(pdf_name)
+            pdfpath += pdf_name
+            
+
+            file_exists = exists(pdfpath)
+            if (file_exists):
+                print('file already downloaded.')
+            else:
+                driver.find_element(By.XPATH, f"(//span[@data-testid='audio-download'])[{i+1}]").click()
+                input('Getting the first download. input to continue')
+        else:
+            print(f'no pdf here in {pdf_name}!')
+
+       
+        print(pdfpath)
+
+        showPaperSummary(pdfpath)
 
     #driver.find_element(By.XPATH("//div[@title='Type a message']")).send_keys(f"This is bot generated message. Sorry for the trouble. Message at {str(time.time())}")
     #driver.find_element(By.XPATH("//div[@title='Type a message']")).send_keys(Keys.RETURN)
+
 
 find_all_pdfs("Study")

@@ -61,3 +61,6 @@ Need -  to have better training data.
 `whatsapp_pdf_text_summarisation.py`
 
 able to download the file.
+
+able to get pdf summary. need to refine what need to show.
+![](pdfsummary.png)

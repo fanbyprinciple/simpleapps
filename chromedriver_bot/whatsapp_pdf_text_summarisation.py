@@ -119,8 +119,11 @@ def find_all_pdfs(name):
             print(pdfpath)
 
             if when not in prev_log:
+                print(f"procesing {when}")
                 bot_response[when] = [showPaperSummary(pdfpath), who]
                 prev_log[when] = bot_response[when] # for saving
+            else :
+                print(f"{when} already processed")
         
         else:
             print(f'no pdf here in {pdf_name}!')

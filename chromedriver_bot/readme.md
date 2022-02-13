@@ -87,5 +87,13 @@ TOdo
 ![](whatsapp_pdf.png)
 
 1. integrate into whatsapp autotext 
+
+`whatsapp_alltext_getter.py`
+        a . able to extract links 
+        ![](extracting_links.png)
+
+        some problem now. check.
+
 2. add a seperate summarizer for youtube and twitter
 3. add for pdfs
+4. fanbot that will say good morning with thought

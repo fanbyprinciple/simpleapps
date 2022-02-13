@@ -1,0 +1,35 @@
+
+Hackers Planted Fake Digital Evidence on Devices of Indian Activists and Lawyers
+Reach out to get featured—contact us to send your exclusive story idea, research, hacks, or ask us a question or leave a comment/feedback!
+Follow Us On Social Media
+Hackers Planted Fake Digital Evidence on Devices of Indian Activists and Lawyers
+A previously unknown hacking group has been linked to targeted attacks against human rights activists, human rights defenders, academics, and lawyers across India in an attempt to plant "incriminating digital evidence."
+Cybersecurity firm SentinelOne attributed the intrusions to a group it tracks as "ModifiedElephant," an elusive threat actor that's been operational since at least 2012, whose activity aligns sharply with Indian state interests.
+"ModifiedElephant operates through the use of commercially available remote access trojans (RATs) and has potential ties to the commercial surveillance industry," the researchers said. "The threat actor uses spear-phishing with malicious documents to deliver malware, such as NetWire, DarkComet, and simple keyloggers."
+The primary goal of ModifiedElephant is to facilitate long-term surveillance of targeted individuals, ultimately leading to the delivery of "evidence" on the victims' compromised systems with the goal of framing and incarcerating vulnerable opponents.
+Notable targets include individuals associated with the 2018 Bhima Koregaon violence in the Indian state of Maharashtra, SentinelOne researchers Tom Hegel and Juan Andres Guerrero-Saade said in a report.
+The attack chains involve infecting the targets — some of them multiple times in a single day — using spear-phishing emails themed around topics related to activism, climate change, and politics, and containing malicious Microsoft Office document attachments or links to files hosted externally that are weaponized with malware capable of taking control of victim machines.
+"The phishing emails take many approaches to gain the appearance of legitimacy," the researchers said. "This includes fake body content with a forwarding history containing long lists of recipients, original email recipient lists with many seemingly fake accounts, or simply resending their malware multiple times using new emails or lure documents."
+Also distributed using phishing emails is an unidentified commodity trojan targeting Android that enables the attackers to intercept and manage SMS and call data, wipe or unlock the device, perform network requests, and remotely administer the infected devices. SentinelOne characterized it as an "ideal low-cost mobile surveillance toolkit."
+"This actor has operated for years, evading research attention and detection due to their limited scope of operations, the mundane nature of their tools, and their regionally- specific targeting," the researchers said.
+Found this article interesting? Follow THN on Facebook, Twitter  and LinkedIn to read more exclusive content we post.
+Cyber Attack, hacking news, India, Malware, ModifiedElephant
+CISA Orders Federal Agencies to Patch Actively Exploited Windows Vulnerability
+Apple Releases iOS, iPadOS, macOS Updates to Patch Actively Exploited Zero-Day Flaw
+CISA, FBI, NSA Issue Advisory on Severe Increase in Ransomware Attacks
+U.S. Arrests Two and Seizes $3.6 Billion Cryptocurrency Stolen in 2016 Bitfinex Hack
+New Argo CD Bug Could Let Hackers Steal Secret Info from Kubernetes Apps
+France Rules That Using Google Analytics Violates GDPR Data Protection Law
+Make software security a priority in 2022Learn more about how security-aware developers represent a vast and largely untapped resource that can support cyber defenses.
+Uncover the secure developer inside every coderEmpower developers to deliver secure coding that is intrinsic to their daily process.
+Best Practices to Thwart Business Email Compromise (BEC) AttacksHere is a solution to help you detect and stop spoofing and account takeover attacks.
+Learn to Code — 13 Online CoursesLearn to Code — Get 2021 Master Bundle of 13 Online Courses @ 99% OFF
+18 latest courses from top cybersecurity instructors — from Python programming to Metasploit.
+Complete exam preparation training for Ethical Hacking, Penetration Testing, CISSP, CCSP, CISM, CISA, and CompTia exams.
+Password Manager and VPN for Lifetime
+Get lifetime subscription of Sticky Password Premium and KeepSolid VPN Unlimited.
+AWS, Cisco, and CompTIA Courses
+Prepare for a long list of IT certification exams, including Amazon, Cisco, Google, Microsoft, and CompTIA.
+Cybersecurity Newsletter — Stay Informed
+Sign up for cybersecurity newsletter and get latest news updates delivered straight to your inbox daily.
+© The Hacker News, 2021. All Rights Reserved.

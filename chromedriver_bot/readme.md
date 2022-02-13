@@ -64,3 +64,28 @@ able to download the file.
 
 able to get pdf summary. need to refine what need to show.
 ![](pdfsummary.png)
+
+# Shifting to link summarisation
+
+### html text extraction 
+
+`file_link_enumerate.py` - working. Not able to summarize using openAI.
+
+### trying to work with transformer summarization
+
+https://www.machinecurve.com/index.php/2020/12/21/easy-text-summarization-with-huggingface-transformers-and-machine-learning/
+
+`hugging_face_summarization.py`
+
+It works 
+![](huggingface_summarizer.png)
+
+TOdo
+
+0. check whether this works with pdf. - it works!
+
+![](whatsapp_pdf.png)
+
+1. integrate into whatsapp autotext 
+2. add a seperate summarizer for youtube and twitter
+3. add for pdfs

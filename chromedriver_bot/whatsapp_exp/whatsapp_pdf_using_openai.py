@@ -14,10 +14,6 @@ import pathlib
 import pdfplumber
 import numpy as np
 
-
-from transformers import pipeline
-summarizer = pipeline("summarization")
-
 # to save
 import pickle
 
@@ -64,14 +60,18 @@ def showPaperSummary(pdfpath):
     for i, page in enumerate(paperContent):    
         print(f"looking at page {i}.")
         text = page.extract_text() + tldr_tag
+        response = openai.Completion.create(engine="davinci",prompt=text,temperature=0.3,
+            max_tokens=140,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+            stop=["\n"]
+        )
+
+        bot_response.append(response["choices"][0]["text"])
+        if (i>10):
+            break
         
-        print("text: ", text)
-
-        summarized = summarizer(text, min_length=75, max_length=300)
-
-        print( "summary: ", summarized[0]['summary_text'])
-
-        bot_response.append(summarized[0]['summary_text'])
     return bot_response
 
 

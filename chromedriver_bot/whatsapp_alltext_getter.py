@@ -38,12 +38,14 @@ def find_html_in_text(name):
 
     print("going to top\n")
 
-    for i in range(2):
+    days_back = 4
+    for i in range(days_back):
         element = driver.find_element_by_xpath("(//div[@class='cvjcv EtBAv'])[2]")
         print(element.text)
 
         coordinates = element.location_once_scrolled_into_view
         driver.execute_script('window.scrollTo({}, {});'.format(coordinates['x'], coordinates['y']))
+        time.sleep(1)
         # actions = ActionChains(driver)
         # actions.move_to_element(element).perform()
 
@@ -53,17 +55,21 @@ def find_html_in_text(name):
     # getting https
 
     all_links = []
-    print(all_texts)
+    # print(all_texts)
     for t in all_texts:
         a = t.text.split("\n")
 
         for b in a:
             if "https" in b:
-                print(b+ "\n")
-                all_links.append(b)
+                # print(b+ "\n")
+                only_link = "https" + b.split('https')[1].split(' ')[0]
+                all_links.append(only_link)
+
+    all_links = list(set(all_links))
+    print(all_links)
     string_text = '\n'.join(all_links)
 
-    driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(f"Hello! These are all the links exchanged in last 2 days. {string_text}")
+    driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(f"Hello! These are all the links exchanged in last {days_back} days.\n {string_text}")
     driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
 
 print("Calling chat_with_a_person().")

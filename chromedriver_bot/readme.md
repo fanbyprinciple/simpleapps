@@ -89,10 +89,19 @@ TOdo
 1. integrate into whatsapp autotext 
 
 `whatsapp_alltext_getter.py`
+
         a . able to extract links 
         ![](extracting_links.png)
 
         some problem now. check.
+
+        b. fanbot reply configured
+
+        able to reply.
+
+        c. find better ways to extract text from paragraphs, can you only extract the paragraphs?
+
+
 
 2. add a seperate summarizer for youtube and twitter
 3. add for pdfs

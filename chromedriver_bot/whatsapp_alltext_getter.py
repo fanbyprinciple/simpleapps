@@ -59,7 +59,7 @@ def enumerate_link(urlink):
     split_array = text.split('\n')
     final = ""
     for t in split_array:
-        if len(t.split(' '))>4:
+        if len(t.split(' '))>6:
             final += "\n"+ t
     
     f = open('file_output', 'w+', encoding='UTF-8')
@@ -76,7 +76,8 @@ def find_html_in_text(name):
 
     days_back = 2
     for i in range(days_back):
-        element = driver.find_element_by_xpath("(//div[@class='cvjcv EtBAv'])[2]")
+        #element = driver.find_element_by_xpath("(//div[@class='cvjcv EtBAv'])[2]")
+        element = driver.find_element_by_xpath("(//div[@class='_1Gy50'])[1]")
         print(element.text)
 
         coordinates = element.location_once_scrolled_into_view
@@ -113,23 +114,35 @@ def find_html_in_text(name):
     all_links = list(set(all_links))
     print(all_links)
 
+    if(len(all_links) > 0):
+        enumerate_link(all_links[0])
 
-    enumerate_link(all_links[0])
+        f = open('file_output', "r", encoding='utf-8')
+        to_tokenize = str(f.read())
 
-    f = open('file_output', "r", encoding='utf-8')
-    to_tokenize = str(f.read())
+        if len(to_tokenize) > 1024:
+            to_tokenize = to_tokenize[:1024]
 
-    if len(to_tokenize) > 1024:
-        to_tokenize = to_tokenize[:1024]
+        summarizer = pipeline("summarization")
+        summarized = summarizer(to_tokenize, min_length=20, max_length=1024)
 
-    summarizer = pipeline("summarization")
-    summarized = summarizer(to_tokenize, min_length=20, max_length=1024)
+        result  = summarized[0]['summary_text']
+    else : 
+        result = f"Last message had no link, {name}."
 
-    result  = summarized[0]['summary_text']
+    # making a reply
+    elem = all_texts[0]
+    a = ActionChains(driver)
+    #m= driver.find_element_by_link_text("Enabled")
+    a.move_to_element(elem).perform()
+    down_arrow = driver.find_element(By.XPATH, "(//span[@data-testid='down-context'])[1]")
+    down_arrow.click()
+    #@(//div[@class='_1Gy50'])[1]
 
-    string_text = '\n'.join(all_links)
+    reply_button = driver.find_element(By.XPATH, "(//div[@aria-label='Reply'])[last()]")
+    reply_button.click()
 
-    driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(f"Hello! one of the links exchanged in last {days_back} days is {all_links[0]}. Here is a short summary of the link : {result}")
+    driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(f"Fannbot: Hello! Here is a short summary of the link : {result}")
     driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
 
 print("Calling chat_with_a_person().")

@@ -1,35 +1,24 @@
 
-Hackers Planted Fake Digital Evidence on Devices of Indian Activists and Lawyers
-Reach out to get featured—contact us to send your exclusive story idea, research, hacks, or ask us a question or leave a comment/feedback!
-Follow Us On Social Media
-Hackers Planted Fake Digital Evidence on Devices of Indian Activists and Lawyers
-A previously unknown hacking group has been linked to targeted attacks against human rights activists, human rights defenders, academics, and lawyers across India in an attempt to plant "incriminating digital evidence."
-Cybersecurity firm SentinelOne attributed the intrusions to a group it tracks as "ModifiedElephant," an elusive threat actor that's been operational since at least 2012, whose activity aligns sharply with Indian state interests.
-"ModifiedElephant operates through the use of commercially available remote access trojans (RATs) and has potential ties to the commercial surveillance industry," the researchers said. "The threat actor uses spear-phishing with malicious documents to deliver malware, such as NetWire, DarkComet, and simple keyloggers."
-The primary goal of ModifiedElephant is to facilitate long-term surveillance of targeted individuals, ultimately leading to the delivery of "evidence" on the victims' compromised systems with the goal of framing and incarcerating vulnerable opponents.
-Notable targets include individuals associated with the 2018 Bhima Koregaon violence in the Indian state of Maharashtra, SentinelOne researchers Tom Hegel and Juan Andres Guerrero-Saade said in a report.
-The attack chains involve infecting the targets — some of them multiple times in a single day — using spear-phishing emails themed around topics related to activism, climate change, and politics, and containing malicious Microsoft Office document attachments or links to files hosted externally that are weaponized with malware capable of taking control of victim machines.
-"The phishing emails take many approaches to gain the appearance of legitimacy," the researchers said. "This includes fake body content with a forwarding history containing long lists of recipients, original email recipient lists with many seemingly fake accounts, or simply resending their malware multiple times using new emails or lure documents."
-Also distributed using phishing emails is an unidentified commodity trojan targeting Android that enables the attackers to intercept and manage SMS and call data, wipe or unlock the device, perform network requests, and remotely administer the infected devices. SentinelOne characterized it as an "ideal low-cost mobile surveillance toolkit."
-"This actor has operated for years, evading research attention and detection due to their limited scope of operations, the mundane nature of their tools, and their regionally- specific targeting," the researchers said.
-Found this article interesting? Follow THN on Facebook, Twitter  and LinkedIn to read more exclusive content we post.
-Cyber Attack, hacking news, India, Malware, ModifiedElephant
-CISA Orders Federal Agencies to Patch Actively Exploited Windows Vulnerability
-Apple Releases iOS, iPadOS, macOS Updates to Patch Actively Exploited Zero-Day Flaw
-CISA, FBI, NSA Issue Advisory on Severe Increase in Ransomware Attacks
-U.S. Arrests Two and Seizes $3.6 Billion Cryptocurrency Stolen in 2016 Bitfinex Hack
-New Argo CD Bug Could Let Hackers Steal Secret Info from Kubernetes Apps
-France Rules That Using Google Analytics Violates GDPR Data Protection Law
-Make software security a priority in 2022Learn more about how security-aware developers represent a vast and largely untapped resource that can support cyber defenses.
-Uncover the secure developer inside every coderEmpower developers to deliver secure coding that is intrinsic to their daily process.
-Best Practices to Thwart Business Email Compromise (BEC) AttacksHere is a solution to help you detect and stop spoofing and account takeover attacks.
-Learn to Code — 13 Online CoursesLearn to Code — Get 2021 Master Bundle of 13 Online Courses @ 99% OFF
-18 latest courses from top cybersecurity instructors — from Python programming to Metasploit.
-Complete exam preparation training for Ethical Hacking, Penetration Testing, CISSP, CCSP, CISM, CISA, and CompTia exams.
-Password Manager and VPN for Lifetime
-Get lifetime subscription of Sticky Password Premium and KeepSolid VPN Unlimited.
-AWS, Cisco, and CompTIA Courses
-Prepare for a long list of IT certification exams, including Amazon, Cisco, Google, Microsoft, and CompTIA.
-Cybersecurity Newsletter — Stay Informed
-Sign up for cybersecurity newsletter and get latest news updates delivered straight to your inbox daily.
-© The Hacker News, 2021. All Rights Reserved.
+Text Summarization on HuggingFaceSummarization is basically of two types i.e. Abstractive and Extractive Summarization. Here we will cover both types and will see how we can finetune pretrained T5 transformers on particular dataset.Yugal Jain1. Introduction Summarization is a task of getting short summaries from long documents i.e. news articles or research articles. Basically it can be of two types i.e. Extractive and abstractive summarization.Extractive Summarization - Extractive Summarization is a shortening of paragraphs in large documents i.e. news articles, medical publications or research articles throught extracting important information from those documents without keeping context in mind.Abstractive Summarization - Abstractive Summarization is quite different from prior basic summarization technique. In prior summarization, resulting summaries may or maynot be meaningful because it's just a process of extracting important sentences from long documents but in abstractive summarization , resulting summaries tries to consider context for whole document and then summarize it accordingly where words maynot be exact similar to given documents. That's why abstractive summarization is commonly used for summarizing news articles. For e.g. inshorts app uses abstractive summarization system to summarize news into short summaries.Try out in Colab2. DatasetWe will use Cnn-Daily News Summary dataset here to perform summarization using T5 pretrained model. T5 is a text-to-text transfer transformer model which is trained on unlabelled and labelled data and further finetuned to individual tasks for language modelling. Here we will use T5-small pretrained model to finetune it on wikihow dataset for summarization task.Custom DataClass	class CustomDataset(Dataset):
+source = self.tokenizer.batch_encode_plus([text],max_length=self.text_len,return_tensors='pt',pad_to_max_length=True) # Each source sequence is encoded and padded to max length in batches
+target = self.tokenizer.batch_encode_plus([summary],max_length=self.summ_len,return_tensors='pt',pad_to_max_length=True) # Each target sequence is encoded and padded to max lenght in batches
+}3. Pretrained ModelThere are basically two architectures are commonly used for summarization i.e. T5 and BART based. In our case we will go for T5 i.e. Text to Text Transfer Transformer based pretrained model. We will use T5ForConditionalGeneration architecture as pretrained model and T5TokenizerFast as tokenizer.4. TrainingNow after creating custom dataclass to load and preprocess summary dataset, we will finetune T5 model for summary generation.def train(epoch,model,tokenizer,loader,optimizer,device):
+y_ids = y[:,:-1].contiguous() # all ids except last one
+lm_labels = y[:,1:].clone().detach() # copy the address and detach label
+lm_labels[y[:,1:]==tokenizer.pad_token_id] = -100 # if it's padded token then assign it to -100
+outputs = model(input_ids = source_ids,attention_mask = masks,decoder_input_ids=y_ids,labels=lm_labels)
+wandb.log({'training_loss':loss}) # Saving logs after every 10 steps or batches
+loss.backward() # optimize weights through backpropagation loss
+optimizer.step()5. EvaluationFinally after training, it's time to evaluate model on validation data. def validation(epoch,tokenizer,model,device,loader):
+prediction = model.generate(input_ids=ids,attention_mask = mask,num_beams=2,max_length=170,repetition_penalty=2.5,early_stopping=True,length_penalty=1.0)
+# Decode y_id and prediction #
+preds = [tokenizer.decode(p,skip_special_tokens=True,clean_up_tokenization_spaces=False) for p in prediction]
+target = [tokenizer.decode(t,skip_special_tokens=True,clean_up_tokenization_spaces=False) for t in y_id]
+return predictions,actual6. IntegrationCalling all defined functions above here in main function.def main():
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+We will use cnn_dailymail summarization dataset for abstractive summarization #
+# As we can observe, dataset is too large so for now we will consider just 8k rows for training and 4k rows for validation
+dataset['article'] = [re.sub('\(.*?\)','',t) for t in dataset['article']]
+dataset['article'] = [t.replace('--','') for t in dataset['article']]
+val_loader = DataLoader(dataset = val_dataset,batch_size=2,num_workers=0)
+print(pred,target)main()7. ResultsRun colorful-oath-30 to see line plot for loss per step.Actual text- 'Spokesperson: Experts are investigating how the UK military health care worker got Ebola . It is being decided if the military worker infected in Sierra Leone will return to England . There have been some 24,000 reported cases and 10,000 deaths in the latest Ebola outbreak .', "Iraqi forces make some progress as they seek to advance toward Tikrit . The city, best known to Westerners as Saddam Hussein's birthplace, was taken by ISIS in June .Summary- 'Ebola outbreak has devastated parts of West Africa, with Sierra Leone, Guinea and Liberia hardest hit . Authorities are investigating how this person was exposed to the virus .', 'Iraqi forces appear to be making progress on the third day of a major offensive . The operation is part of a wide-scale offensive to retake Tikrit and Salahuddin province . Iran has provided advisers, weapons and ammunition to the Iraqi government .'"Weights & BiasesWeights & Biases helps you keep track of your machine learning experiments. Use our tool to log hyperparameters and output metrics from your runs, then visualize and compare results and quickly share findings with your colleagues.﻿Get started in 5 minutes.

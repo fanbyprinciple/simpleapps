@@ -1,7 +1,9 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
-url = "https://www.youtube.com/watch?v=hcMzwMrr1tE"
+
+
+url = "https://wandb.ai/biased-ai/huggingface/reports/Text-Summarization-on-HuggingFace--Vmlldzo3ODA5MjI"
 html = urlopen(url).read()
 soup = BeautifulSoup(html, features="html.parser")
 

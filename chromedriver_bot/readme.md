@@ -101,8 +101,13 @@ TOdo
 
         c. find better ways to extract text from paragraphs, can you only extract the paragraphs?
 
+        able to extract paragraphs.
 
+        ![](summary.png)
 
 2. add a seperate summarizer for youtube and twitter
+
+        a. youtube 
+
 3. add for pdfs
 4. fanbot that will say good morning with thought

@@ -7,6 +7,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 
 import time 
+import open_ai_bot_experiment
+
 
 #supress all warnings
 import warnings
@@ -24,7 +26,7 @@ driver.get("https://web.whatsapp.com/")
 input("Press anything after QR scan")
 time.sleep(5)
 
-names = ["Achu Jio"]
+names = ["Achu Jio", "Tanushree", "Pallavi"]
 #message = "Android auto messaging bot here, " +  name + "!"
 
 def send_messages(names):
@@ -56,18 +58,18 @@ def search_and_send_custom_messages(names):
         time.sleep(2)
 
         print("\nlooking for last message\n")
-        input_text = driver.find_element_by_xpath("//div[@class='_1Gy50'])[last()]").text # not working
-        print(f"found: {input_text}")
-        output_text = chatter_bot_interaction(input_text)
+        last_text = driver.find_element_by_xpath("(//div[@class='_22Msk'])[last()]").text # not working
+        print(f"found: {last_text}")
+        output_text = chatter_bot_interaction(last_text)
         print('you:', output_text)
-        driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(output_text)
+        driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(output_text+ "\n" + last_text)
         driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
 
 
 def chatter_bot_interaction(input_text):
     print("input : ", input_text)
     
-    response = "Will you allow me to use our chat as training data to a bot?"
+    response = "Hi! its your friendly neighborhood fanbot. I am trying to extract your last communication to me. I guess it is: "
     print("Bot Response:", response)
     response = f":: msg at {str(time.perf_counter())} :: {response}"
     if(response):
@@ -75,5 +77,7 @@ def chatter_bot_interaction(input_text):
     else :
         return f"fan bot is offline right now."
 
+
+print("Calling search_and_send_custom_messages().")
 search_and_send_custom_messages(names)
 

@@ -43,3 +43,71 @@ openai keys from : "https://beta.openai.com/account/api-keys"
 
 https://www.kaggle.com/fanbyprinciple/hugging-face-conversational-ai/edit
 
+
+# whatsapp integration complete
+
+it is a maniac. Right now.
+Can talk to one person.
+
+`gpt_talk_to_one_whatsapp.py`
+
+![](maniac.png)
+
+Need -  to have better training data.
+        to wait for messages again.
+
+# training a bot to extract  all the pdf and and download and summarise
+
+`whatsapp_pdf_text_summarisation.py`
+
+able to download the file.
+
+able to get pdf summary. need to refine what need to show.
+![](pdfsummary.png)
+
+# Shifting to link summarisation
+
+### html text extraction 
+
+`file_link_enumerate.py` - working. Not able to summarize using openAI.
+
+### trying to work with transformer summarization
+
+https://www.machinecurve.com/index.php/2020/12/21/easy-text-summarization-with-huggingface-transformers-and-machine-learning/
+
+`hugging_face_summarization.py`
+
+It works 
+![](huggingface_summarizer.png)
+
+TOdo
+
+0. check whether this works with pdf. - it works!
+
+![](whatsapp_pdf.png)
+
+1. integrate into whatsapp autotext 
+
+`whatsapp_alltext_getter.py`
+
+        a . able to extract links 
+        ![](extracting_links.png)
+
+        some problem now. check.
+
+        b. fanbot reply configured
+
+        able to reply.
+
+        c. find better ways to extract text from paragraphs, can you only extract the paragraphs?
+
+        able to extract paragraphs.
+
+        ![](summary.png)
+
+2. add a seperate summarizer for youtube and twitter
+
+        a. youtube 
+
+3. add for pdfs
+4. fanbot that will say good morning with thought

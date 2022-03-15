@@ -91,6 +91,8 @@ def find_html_in_text(name):
         coordinates = element.location_once_scrolled_into_view
         driver.execute_script('window.scrollTo({}, {});'.format(coordinates['x'], coordinates['y']))
         time.sleep(1)
+
+        #ActionChains(driver).move_to_element(driver.sl.find_element(By.XP'my-id')).perform()
         # actions = ActionChains(driver)
         # actions.move_to_element(element).perform()
 
@@ -138,6 +140,7 @@ def find_html_in_text(name):
             summarized = summarizer(to_tokenize, min_length=20, max_length=1024)
 
             result  = summarized[0]['summary_text']
+            print(f"\n{result}\n")
 
             result_list.append(f"{i+1}. {all_links[i]} : {result}")
             
@@ -152,7 +155,9 @@ def find_html_in_text(name):
 
             # reply_button = driver.find_element(By.XPATH, "(//div[@aria-label='Reply'])[last()]")
             # reply_button.click()
-        driver.find_element_by_xpath("//div[@title='Type a message']").send_keys("Fanbot: here is a short summary of links exchanged in past few days.")
+        print("\n".join(result_list))
+        input("enter anything to continue...")
+        driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(f"Fanbot: Hello! Here is a short AI based summary of {len(all_links)} links exchanged in past few days for those who missed it.")
         driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
         driver.find_element_by_xpath("//div[@title='Type a message']").send_keys("\n".join(result_list))
         driver.find_element_by_xpath("//div[@title='Type a message']").send_keys(Keys.RETURN)
@@ -164,4 +169,4 @@ def find_html_in_text(name):
 print("Calling chat_with_a_person().")
 
 #find_html_in_text("achu")
-find_html_in_text("tanushree")
+find_html_in_text("Delhi")

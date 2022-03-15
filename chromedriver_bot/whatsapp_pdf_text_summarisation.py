@@ -138,7 +138,7 @@ def find_all_pdfs(name):
         driver.find_element(By.XPATH("//div[@title='Type a message']")).send_keys(Keys.RETURN)
 
 
-find_all_pdfs("Achu")
+find_all_pdfs("Study")
 
 # saving all prev_log
 file_to_read.close()

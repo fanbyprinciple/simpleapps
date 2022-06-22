@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1,
+    "label": "Interests"
+  },
+  {
+    "id": 2,
+    "label": "Music",
+    "parent": 1
+  },
+  {
+    "id": 3,
+    "label": "Graphic Design",
+    "parent": 1
+  },
+  {
+    "id": 4,
+    "label": "Coding",
+    "parent": 1
+  },
+  {
+    "id": 5,
+    "label": "Piano",
+    "parent": 2
+  },
+  {
+    "id": 6,
+    "label": "Guitar",
+    "parent": 2
+  },
+  {
+    "id": 7,
+    "label": "Electronic",
+    "parent": 2
+  },
+  {
+    "id": 8,
+    "label": "Procreate",
+    "parent": 3
+  },
+  {
+    "id": 9,
+    "label": "Photoshop",
+    "parent": 3
+  },
+  {
+    "id": 10,
+    "label": "Illustrator",
+    "parent": 3
+  },
+  {
+    "id": 11,
+    "label": "Sketch",
+    "parent": 3
+  },
+  {
+    "id": 12,
+    "label": "React",
+    "parent": 4
+  },
+  {
+    "id": 13,
+    "label": "TypeScript",
+    "parent": 4
+  },
+  {
+    "id": 14,
+    "label": "GraphQL",
+    "parent": 4
+  },
+  {
+    "id": 15,
+    "label": "Firebase",
+    "parent": 4
+  },
+  {
+    "id": 16,
+    "label": "Tailwind CSS",
+    "parent": 4
+  }
+]

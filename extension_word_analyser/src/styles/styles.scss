@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+html{
+  width:100%;
+}
+body{
+  margin: 0px;
+  height: 400px;
+  width: 280px;
+  font-family: 'Special Elite', sans-serif;
+  background: white;
+.header {
+    width: 280px;
+    height: 50px;
+    margin: 0px;
+    background-color: #B0FF8B;
+    padding: 12px 0px;
+h1 {
+      font-family: 'Special Elite';
+      font-size: 28px;
+      opacity: 0.9;
+      margin: 0px 4px 0px 4px;
+      font-weight: 500;
+    }
+p {
+      margin: 0px 4px;
+      font-family: 'Special Elite';
+      font-weight: 400;
+      font-size: 14px;
+    }
+input, #priceperwordInput {
+      text-align: center;
+      font-family: 'Special Elite';
+      font-weight: 400;
+      font-size: 14px;
+    }
+#priceperwordInput {
+      width: 80px;
+    }
+  }
+.footer {
+    width: 280px;
+    height: 40px;
+    margin: 0px;
+    background-color: #B0FF8B;
+    padding: 6px 0px;
+    text-align: center;
+a {
+      text-decoration: none;
+    }
+  }
+.contentBox {
+    width: 280px;
+    height: 310px;
+.resalted {
+      background-color: rgba(176, 255, 139, 0.7);
+      text-decoration: underline;
+    }
+.no-tf-dtctd {
+      margin: 0 10px;
+      text-align: center;
+      font-size: 14px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+a {
+        text-align: right;
+      }
+    }
+  }
+}

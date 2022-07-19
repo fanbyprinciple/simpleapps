@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    background-color: #eaeaea;
+}
+
+#container {
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    position: relative;
+}
+
+#sound{
+    width: 30px; height: 30px;
+    position: absolute;
+    top: 0; left: 0;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+h1,
+#jackpot{
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 30px;
+}
+#spin{
+  text-align: center;
+    margin-bottom: 40px;
+}
+
+#jackpot,
+#score {
+    font-size: 24px;
+}
+
+#wheel_comp{
+    width: 400px; height: 400px;
+    position: relative;
+    margin-bottom: 20px
+}
+#arrow {
+    position: absolute;
+    left: calc(50% - 10px);
+    top: -30px;
+  cursor: pointer;
+    
+    transition: 5s;
+    transform-origin: top center;
+    
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 10px 0 10px;
+    border-color: gold transparent transparent transparent;
+}
+.arrowanimation{
+    animation: arrowanimation 5s linear;
+}
+@keyframes arrowanimation{
+    10%{
+        transform: rotate(-45deg);
+    }
+    15%{
+        transform: rotate(-40deg);
+    }
+    20%{
+        transform: rotate(-45deg);
+    }
+    25%{
+        transform: rotate(-40deg);
+    }
+    30%{
+        transform: rotate(-45deg);
+    }
+    35%{
+        transform: rotate(-40deg);
+    }
+    40%{
+        transform: rotate(-45deg);
+    }
+    45%{
+        transform: rotate(-40deg);
+    }
+    50%{
+        transform: rotate(-45deg);
+    }
+    55%{
+        transform: rotate(-40deg);
+    }
+    60%{
+        transform: rotate(-45deg);
+    }
+    65%{
+        transform: rotate(-40deg);
+    }
+    70%{
+        transform: rotate(-45deg);
+    }
+    75%{
+        transform: rotate(-40deg);
+    }
+    80%{
+        transform: rotate(-45deg);
+    }
+    90%{
+        transform: rotate(0deg);
+    }
+}
+
+#middel{
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 125px; left: 125px;
+    padding-top: 66px;
+}
+
+#wheel {
+    background-image: url(https://github.com/fanbyprinciple/simpleapps/raw/master/foodwheel/wheel_shanks.png);
+    width: 400px;
+    height: 400px;
+    background-size: contain;
+    border-radius: 50%;
+    transition: 5s;
+    overflow: hidden;
+    transform: rotate(7.5deg);
+    
+}

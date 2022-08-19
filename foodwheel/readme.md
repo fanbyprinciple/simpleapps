@@ -4,4 +4,4 @@ https://codepen.io/fanbyprinciple/pen/zYWZMrP
 
 ![](wheel_shanks.png)
 
-https://codepen.io/fanbyprinciple/pen/zYWZMrP
+https://codepen.io/fanbyprinciple/full/zYWZMrP

@@ -133,23 +133,7 @@ def clear():
 # Sorry if my english are bad :( 
 # I'm trying my best for explain this source code
 def salam():
-    print(Fore.RED+'''
-        ██▀███   ▄▄▄▄    █    ██  ██▀███   ██▓    
-        ▓██ ▒ ██▒▓█████▄  ██  ▓██▒▓██ ▒ ██▒▓██▒    
-        ▓██ ░▄█ ▒▒██▒ ▄██▓██  ▒██░▓██ ░▄█ ▒▒██░    
-        ▒██▀▀█▄  ▒██░█▀  ▓▓█  ░██░▒██▀▀█▄  ▒██░    
-        ░██▓ ▒██▒░▓█  ▀█▓▒▒█████▓ ░██▓ ▒██▒░██████▒
-        ░ ▒▓ ░▒▓░░▒▓███▀▒░▒▓▒ ▒ ▒ ░ ▒▓ ░▒▓░░ ▒░▓  ░
-        ░▒ ░ ▒░▒░▒   ░ ░░▒░ ░ ░   ░▒ ░ ▒░░ ░ ▒  ░
-        ░░   ░  ░    ░  ░░░ ░ ░   ░░   ░   ░ ░   
-        ░      ░         ░        ░         ░  ░
-                    ░'''+Style.RESET_ALL)
-
-    print(Fore.RED+'''
-            ----------------------------
-              ► IDN Homograph Attack ◄
-                  ► by @rbayuokt ◄
-            -----------------------------'''+Style.RESET_ALL)
+    print("Homography")
 
 def howTo():
     print(Fore.YELLOW+'''
@@ -237,7 +221,7 @@ def attackGreek(nama,domain):
     if hsl:
         if 'i' in nama:
             makeUrl('i',nama,GreekUnicode[15],'Greek',domain)
-        
+
         if 'k' in nama:
             makeUrl('k',nama,GreekUnicode[16],'Greek',domain)
 
@@ -272,7 +256,6 @@ def attackGreek(nama,domain):
 # domain : type of domain
 def makeUrl(char,nama,unicode,desc,domain):
     namaBaru = nama.replace(char,unicode)
-    print(Fore.GREEN+"============================================="+Style.RESET_ALL)
     print("{0}Change the letter {1} with {2} {3} {4}".format(Fore.YELLOW , char , desc , unicode , Style.RESET_ALL) )
     print("{0}► new URL : {1} {2}".format(Fore.GREEN , namaBaru+domain , Style.RESET_ALL ))
     print("{0}► availability : {1} {2}".format(Fore.GREEN , check_domain(namaBaru+domain) , Style.RESET_ALL ))
@@ -299,20 +282,22 @@ def showAllGreek():
 
 ## taking input from a file
 def checkFileAvail():
-    f = open('input.txt', 'r+')
+    f = open('secret_link.txt', 'r+')
     fnames = f.readlines()
 
     for i in fnames:
-        #print("checking for: ", i.split('.'))
+        print("checking for: ", i.split('.'))
         arr = i.split('.')
         domain = "." + arr[-1]
-        nama = ""
-        for i in range(len(arr)-1):
+        nama = arr[0]
+        for i in range(1,len(arr)-1):
             nama = nama  +"." + arr[i]
         print(Fore.BLUE+"============================================="+Style.RESET_ALL)
         print("checking for : ", nama, domain)
-        attackCryrillic(nama,domain)
-
+        #attackCryrillic(nama,domain)
+        attackGreek(nama, domain)
+        print(Fore.BLUE+"============================================="+Style.RESET_ALL)
+        
 # this code for back to main menu
 def repeat():
     more = input("Again ? (y/n) : ")
@@ -332,8 +317,10 @@ def menu():
     5. File list checker
     6. Exit
     ''')
-    pilihan = input("Choose : ")
-    
+    #pilihan = input("Choose : ")
+    pilihan = '5'
+    # for text file
+
     if pilihan == '1':
         nama = input("\n► Enter name : ")
         domain = input("► Enter domain type : ")

@@ -1,0 +1,56 @@
+body, html {
+    height: 100%;
+    margin: 0;
+/*     display: flex; */
+    justify-content: center;
+/*     align-items: center; */
+    background-color: #f0f0f0;
+  }
+
+@keyframes glowing {
+  0% { color: #000; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 55px #ff2d95, 0 0 75px #ff2d95; }
+  50% { color: #ff2d95; text-shadow: 0 0 5px #fff, 0 0 10px #ff2d95, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 55px #ff2d95, 0 0 75px #ff2d95; }
+  100% { color: #000; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 55px #ff2d95, 0 0 75px #ff2d95; }
+}
+
+.question {
+  animation: glowing 1500ms infinite alternate;
+  font-size: 24px;
+  color: #ff2d95;
+}
+
+.question{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align:center;
+}
+
+ .button-container {
+    text-align: center;
+  }
+
+.btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out; /* Updated to apply to all changes */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Initial shadow for depth */
+}
+
+.btn:hover, .btn:focus {
+/*   background-color: yellow; Slightly lighter green for contrast */
+  color: #fff; /* Keeping white color for simplicity, but you can change it */
+  transform: scale(1.05); /* Slightly increase the size */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Larger shadow for hover effect */
+}
+.btn-no {
+    background-color: #f44336; /* Red */

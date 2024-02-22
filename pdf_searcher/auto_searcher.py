@@ -1,5 +1,6 @@
 import fitz  # PyMuPDF
 import os
+import re
 
 # Function to read keywords and their serial numbers from the file
 def read_keywords(file_path):
@@ -24,20 +25,22 @@ def search_pdfs(keywords_dict, pdf_repo, output_file_path):
             for page in doc:
                 text = page.get_text("text")
 
-                with open('all_text', 'a') as text1:
+                # Ensure text is treated as UTF-8
+                text = text.encode('utf-8', errors='ignore').decode('utf-8', errors='ignore')
+
+                with open('all_text', 'a', encoding='utf-8') as text1:  # Specify encoding here
                     try:
                         text1.write(text.lower())
-                    except:
-                        print('<Enc error>')
+                    except Exception as e:
+                        print(f'<Enc error: {str(e)}>')
 
                 words = text.split()
 
                 for serial_number, keywords in keywords_dict.items():
                     for keyword in keywords:
-                        # print(serial_number, keyword.lower(), text.lower())
-                        # Check each keyword in the text
-                        if keyword.lower() in text.lower():  # Case-insensitive search
-                            print('true')
+                        keyword_regex = re.compile(r'\b' + re.escape(keyword.lower()) + r'\b')
+                        if keyword_regex.search(text.lower()):
+
                             start_indices = [i for i, word in enumerate(words) if keyword.lower() in word.lower()]
                             for start in start_indices:
                                 start_idx = max(start - 50, 0)
@@ -46,25 +49,13 @@ def search_pdfs(keywords_dict, pdf_repo, output_file_path):
                                 entry = f"{keyword}> {filename} - Page {page.number + 1}: {excerpt}\n"
                                 results_dict[serial_number].append(entry)
 
-    # When writing results to a file, specify the encoding as 'utf-8'
-    with open(output_file_path, 'w', encoding='utf-8') as f:
-        for serial in sorted(results_dict, key=lambda x: int(x)):  # Assuming serial numbers are integers
+    with open(output_file_path, 'w', encoding='utf-8') as f:  # Ensure UTF-8 encoding
+        for serial in sorted(results_dict, key=lambda x: int(x)):
             for result in results_dict[serial]:
                 try:
                     f.write(f"Serial {serial}, {result}")
                 except UnicodeEncodeError as e:
                     f.write(f'<enc_err: {str(e)}>\n')
-
-
-    for serial in sorted(results_dict, key=lambda x: int(x)):  # Assuming serial numbers are integers
-            for result in results_dict[serial]:
-                try:
-                    print(f"Serial {serial}, {result}")
-                except UnicodeEncodeError as e:
-                    print(f'<enc_err: {str(e)}>\n')
-
-
-    print(f"Search completed. Results written to {output_file_path}")
 
 
 # File paths

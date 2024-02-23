@@ -85,7 +85,7 @@ folder_label.grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
 folder_path_entry = tk.Entry(root, width=50)
 folder_path_entry.grid(row=0, column=1, padx=5, pady=5)
 
-folder_path = 'pdf_repo'
+
 combined_file_path = combine_pdf_text(folder_path)
    
 
